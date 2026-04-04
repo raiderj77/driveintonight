@@ -1,112 +1,744 @@
 [
   {
-    "name": "Skyview Drive-In",
-    "slug": "skyview-drive-in-fort-smith",
-    "state": "Arkansas",
-    "stateSlug": "arkansas",
-    "city": "Fort Smith",
-    "lat": 35.3859,
-    "lng": -94.3985,
-    "description": "One of America's longest-running drive-in theaters, Skyview has been entertaining families since 1949. Features double-feature programming and a classic concession stand with traditional drive-in fare.",
-    "amenities": ["FM radio sound", "Concession stand", "Playground", "Double features", "Pet friendly"]
+    "name": "Sunset Drive-In",
+    "slug": "sunset-drive-in",
+    "state": "New York",
+    "stateSlug": "new-york",
+    "city": "",
+    "lat": 43.20371,
+    "lng": -78.470382,
+    "description": "Sunset Drive-In is a drive-in movie theater in New York. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "http://sunsetdrive-in.com/"
+  },
+  {
+    "name": "Ocala Drive-In",
+    "slug": "ocala-drive-in",
+    "state": "Florida",
+    "stateSlug": "florida",
+    "city": "",
+    "lat": 29.138322,
+    "lng": -82.110707,
+    "description": "Ocala Drive-In is a drive-in movie theater in Florida. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://ocaladrivein.info/"
+  },
+  {
+    "name": "Starlite Drive-In Theatre",
+    "slug": "starlite-drive-in-theatre",
+    "state": "South Dakota",
+    "stateSlug": "south-dakota",
+    "city": "",
+    "lat": 43.752889,
+    "lng": -98.028475,
+    "description": "Starlite Drive-In Theatre is a drive-in movie theater in South Dakota. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ]
+  },
+  {
+    "name": "49'er Drive-In Theater",
+    "slug": "49er-drive-in-theater",
+    "state": "Indiana",
+    "stateSlug": "indiana",
+    "city": "Valparaiso",
+    "lat": 41.53252,
+    "lng": -87.034433,
+    "description": "49'er Drive-In Theater is a drive-in movie theater in Valparaiso, Indiana. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://49erdrivein.com/"
+  },
+  {
+    "name": "Warwick Drive-In Theatre",
+    "slug": "warwick-drive-in-theatre",
+    "state": "New Jersey",
+    "stateSlug": "new-jersey",
+    "city": "",
+    "lat": 41.235052,
+    "lng": -74.3793,
+    "description": "Warwick Drive-In Theatre is a drive-in movie theater in New Jersey. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://www.warwickdrivein.com/"
+  },
+  {
+    "name": "Route 66 Drive In",
+    "slug": "route-66-drive-in",
+    "state": "Illinois",
+    "stateSlug": "illinois",
+    "city": "Springfield",
+    "lat": 39.73967,
+    "lng": -89.678311,
+    "description": "Route 66 Drive In is a drive-in movie theater in Springfield, Illinois. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://www.route66-drivein.com/"
+  },
+  {
+    "name": "City View Drive-In",
+    "slug": "city-view-drive-in",
+    "state": "New York",
+    "stateSlug": "new-york",
+    "city": "",
+    "lat": 43.641764,
+    "lng": -79.354899,
+    "description": "City View Drive-In is a drive-in movie theater in New York. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://cityviewdrivein.com/"
+  },
+  {
+    "name": "The Saco Drive-In",
+    "slug": "the-saco-drive-in",
+    "state": "Maine",
+    "stateSlug": "maine",
+    "city": "Saco",
+    "lat": 43.550255,
+    "lng": -70.406326,
+    "description": "The Saco Drive-In is a drive-in movie theater in Saco, Maine. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://thesacodrivein.com/"
+  },
+  {
+    "name": "29 Drive In",
+    "slug": "29-drive-in",
+    "state": "Virginia",
+    "stateSlug": "virginia",
+    "city": "Rustburg",
+    "lat": 37.293334,
+    "lng": -79.171206,
+    "description": "29 Drive In is a drive-in movie theater in Rustburg, Virginia. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://29drivein.com/"
+  },
+  {
+    "name": "Wellfleet Drive-In Movie Theater",
+    "slug": "wellfleet-drive-in-movie-theater",
+    "state": "Massachusetts",
+    "stateSlug": "massachusetts",
+    "city": "Wellfleet",
+    "lat": 41.877558,
+    "lng": -69.991805,
+    "description": "Wellfleet Drive-In Movie Theater is a drive-in movie theater in Wellfleet, Massachusetts. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://www.wellfleetcinemas.com/drive-in-theatre/"
+  },
+  {
+    "name": "Delsea Drive-in",
+    "slug": "delsea-drive-in",
+    "state": "Delaware",
+    "stateSlug": "delaware",
+    "city": "",
+    "lat": 39.454022,
+    "lng": -75.041294,
+    "description": "Delsea Drive-in is a drive-in movie theater in Delaware. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://www.delseadrive-in.com/"
+  },
+  {
+    "name": "Starlight Drive-in",
+    "slug": "starlight-drive-in",
+    "state": "Georgia",
+    "stateSlug": "georgia",
+    "city": "Atlanta",
+    "lat": 33.702654,
+    "lng": -84.346934,
+    "description": "Starlight Drive-in is a drive-in movie theater in Atlanta, Georgia. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://starlightdrivein.com/"
+  },
+  {
+    "name": "5 Drive-in",
+    "slug": "5-drive-in",
+    "state": "New York",
+    "stateSlug": "new-york",
+    "city": "",
+    "lat": 43.50397,
+    "lng": -79.689349,
+    "description": "5 Drive-in is a drive-in movie theater in New York. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "www.5drivein.com"
+  },
+  {
+    "name": "Muskoka Drive In Cinema",
+    "slug": "muskoka-drive-in-cinema",
+    "state": "New York",
+    "stateSlug": "new-york",
+    "city": "",
+    "lat": 44.939886,
+    "lng": -79.33306,
+    "description": "Muskoka Drive In Cinema is a drive-in movie theater in New York. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ]
+  },
+  {
+    "name": "Port Elmsley Drive-In Theatre",
+    "slug": "port-elmsley-drive-in-theatre",
+    "state": "New York",
+    "stateSlug": "new-york",
+    "city": "",
+    "lat": 44.887685,
+    "lng": -76.132909,
+    "description": "Port Elmsley Drive-In Theatre is a drive-in movie theater in New York. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://www.portelmsleydrivein.com/"
+  },
+  {
+    "name": "Stardust Newmarket",
+    "slug": "stardust-newmarket",
+    "state": "New York",
+    "stateSlug": "new-york",
+    "city": "East Gwillimbury",
+    "lat": 44.100114,
+    "lng": -79.459451,
+    "description": "Stardust Newmarket is a drive-in movie theater in East Gwillimbury, New York. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ]
+  },
+  {
+    "name": "Cinema 67 Drive-In",
+    "slug": "cinema-67-drive-in",
+    "state": "Indiana",
+    "stateSlug": "indiana",
+    "city": "Spencer",
+    "lat": 39.357173,
+    "lng": -86.731646,
+    "description": "Cinema 67 Drive-In is a drive-in movie theater in Spencer, Indiana. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://www.cinema67.com/"
+  },
+  {
+    "name": "Bengies Drive-In Theatre",
+    "slug": "bengies-drive-in-theatre",
+    "state": "Maryland",
+    "stateSlug": "maryland",
+    "city": "",
+    "lat": 39.336182,
+    "lng": -76.404197,
+    "description": "Bengies Drive-In Theatre is a drive-in movie theater in Maryland. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://www.bengies.com/"
+  },
+  {
+    "name": "Ruskin Family Drive-In Theatre",
+    "slug": "ruskin-family-drive-in-theatre",
+    "state": "Florida",
+    "stateSlug": "florida",
+    "city": "Ruskin",
+    "lat": 27.736712,
+    "lng": -82.427578,
+    "description": "Ruskin Family Drive-In Theatre is a drive-in movie theater in Ruskin, Florida. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "http://www.ruskinfamilydrivein.com/"
+  },
+  {
+    "name": "Elmira Drive-in",
+    "slug": "elmira-drive-in",
+    "state": "New York",
+    "stateSlug": "new-york",
+    "city": "",
+    "lat": 42.095287,
+    "lng": -76.90848,
+    "description": "Elmira Drive-in is a drive-in movie theater in New York. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "http://www.elmiradrivein.com/"
+  },
+  {
+    "name": "Sunset Drive-in",
+    "slug": "sunset-drive-in-2",
+    "state": "California",
+    "stateSlug": "california",
+    "city": "",
+    "lat": 35.258808,
+    "lng": -120.672361,
+    "description": "Sunset Drive-in is a drive-in movie theater in California. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://www.sunsetdriveinslo.com/"
+  },
+  {
+    "name": "Skyway Drive-In Theatre",
+    "slug": "skyway-drive-in-theatre",
+    "state": "Wisconsin",
+    "stateSlug": "wisconsin",
+    "city": "Fish Creek",
+    "lat": 45.138031,
+    "lng": -87.197981,
+    "description": "Skyway Drive-In Theatre is a drive-in movie theater in Fish Creek, Wisconsin. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://www.doorcountydrivein.com/"
+  },
+  {
+    "name": "Midway Drive-In Theatre",
+    "slug": "midway-drive-in-theatre",
+    "state": "New York",
+    "stateSlug": "new-york",
+    "city": "Minetto",
+    "lat": 43.381764,
+    "lng": -76.456701,
+    "description": "Midway Drive-In Theatre is a drive-in movie theater in Minetto, New York. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://www.midwaydrivein.com/"
+  },
+  {
+    "name": "Silver Lake Twin Drive-In",
+    "slug": "silver-lake-twin-drive-in",
+    "state": "New York",
+    "stateSlug": "new-york",
+    "city": "Perry",
+    "lat": 42.699653,
+    "lng": -78.016989,
+    "description": "Silver Lake Twin Drive-In is a drive-in movie theater in Perry, New York. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://charcoalcorral.com/silver-lake-twin-drive-in/"
+  },
+  {
+    "name": "Glen Drive In Theater",
+    "slug": "glen-drive-in-theater",
+    "state": "New York",
+    "stateSlug": "new-york",
+    "city": "Queensbury",
+    "lat": 43.339545,
+    "lng": -73.683474,
+    "description": "Glen Drive In Theater is a drive-in movie theater in Queensbury, New York. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "http://www.glendriveintheater.com/"
+  },
+  {
+    "name": "Black River Drive-In",
+    "slug": "black-river-drive-in",
+    "state": "New York",
+    "stateSlug": "new-york",
+    "city": "Watertown",
+    "lat": 44.003006,
+    "lng": -75.810563,
+    "description": "Black River Drive-In is a drive-in movie theater in Watertown, New York. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://www.blackriverdrivein.com/"
+  },
+  {
+    "name": "Starlight Drive-In",
+    "slug": "starlight-drive-in-2",
+    "state": "Virginia",
+    "stateSlug": "virginia",
+    "city": "",
+    "lat": 37.130552,
+    "lng": -80.381081,
+    "description": "Starlight Drive-In is a drive-in movie theater in Virginia. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ]
+  },
+  {
+    "name": "Holiday Twin Drive-in Theatre",
+    "slug": "holiday-twin-drive-in-theatre",
+    "state": "Colorado",
+    "stateSlug": "colorado",
+    "city": "Fort Collins",
+    "lat": 40.557287,
+    "lng": -105.130635,
+    "description": "Holiday Twin Drive-in Theatre is a drive-in movie theater in Fort Collins, Colorado. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "http://www.holidaytwindrivein.com/"
+  },
+  {
+    "name": "99W Drive-in Theater",
+    "slug": "99w-drive-in-theater",
+    "state": "Oregon",
+    "stateSlug": "oregon",
+    "city": "Newberg",
+    "lat": 45.304876,
+    "lng": -122.948057,
+    "description": "99W Drive-in Theater is a drive-in movie theater in Newberg, Oregon. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://www.99w.com/"
+  },
+  {
+    "name": "Melody 49 Drive-In Theatre",
+    "slug": "melody-49-drive-in-theatre",
+    "state": "Ohio",
+    "stateSlug": "ohio",
+    "city": "",
+    "lat": 39.859586,
+    "lng": -84.378062,
+    "description": "Melody 49 Drive-In Theatre is a drive-in movie theater in Ohio. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://www.melody49drivein.com/"
+  },
+  {
+    "name": "Madera Drive-In Cinema 2",
+    "slug": "madera-drive-in-cinema-2",
+    "state": "California",
+    "stateSlug": "california",
+    "city": "",
+    "lat": 36.97174,
+    "lng": -120.069242,
+    "description": "Madera Drive-In Cinema 2 is a drive-in movie theater in California. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://www.playingtoday.com/maderadrivein"
+  },
+  {
+    "name": "Beacon Drive in Theater",
+    "slug": "beacon-drive-in-theater",
+    "state": "Oklahoma",
+    "stateSlug": "oklahoma",
+    "city": "Guthrie",
+    "lat": 35.853519,
+    "lng": -97.424232,
+    "description": "Beacon Drive in Theater is a drive-in movie theater in Guthrie, Oklahoma. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ]
   },
   {
     "name": "Starlite Drive-In",
-    "slug": "starlite-drive-in-chillicothe",
+    "slug": "starlite-drive-in",
     "state": "Ohio",
     "stateSlug": "ohio",
-    "city": "Chillicothe",
-    "lat": 39.3388,
-    "lng": -82.9750,
-    "description": "A classic drive-in experience in the heart of Ohio, Starlite offers double features on weekends and features a nostalgic concession stand with popcorn, candy, and hot dogs.",
-    "amenities": ["FM radio sound", "Concession stand", "Picnic tables", "Double features", "Family friendly"]
+    "city": "Amelia",
+    "lat": 39.004869,
+    "lng": -84.162076,
+    "description": "Starlite Drive-In is a drive-in movie theater in Amelia, Ohio. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://www.starlitedriveinohio.com/"
   },
   {
-    "name": "Moonlite Drive-In",
-    "slug": "moonlite-drive-in-lebanon",
-    "state": "Tennessee",
-    "stateSlug": "tennessee",
-    "city": "Lebanon",
-    "lat": 36.2067,
-    "lng": -86.2853,
-    "description": "Tennessee's premier drive-in theater featuring the latest releases with classic FM broadcast audio. Moonlite offers a full menu of concessions and a family-friendly atmosphere.",
-    "amenities": ["FM radio sound", "Full menu", "Playground", "Double features", "RV friendly"]
+    "name": "Holiday Auto Theatre",
+    "slug": "holiday-auto-theatre",
+    "state": "Ohio",
+    "stateSlug": "ohio",
+    "city": "",
+    "lat": 39.431031,
+    "lng": -84.622238,
+    "description": "Holiday Auto Theatre is a drive-in movie theater in Ohio. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://www.holidayautotheatre.com/"
   },
   {
-    "name": "Sunset Drive-In",
-    "slug": "sunset-drive-in-knox",
-    "state": "Indiana",
-    "stateSlug": "indiana",
-    "city": "Knox",
-    "lat": 41.2938,
-    "lng": -86.6201,
-    "description": "A family favorite since 1952, Sunset Drive-In offers the classic drive-in experience with modern touches. Two screens show current releases throughout the summer season.",
-    "amenities": ["FM radio sound", "Concession stand", "Playground", "Double features", "Pet friendly"]
-  },
-  {
-    "name": "Bel Air Drive-In",
-    "slug": "bel-air-drive-in-kalamazoo",
-    "state": "Michigan",
-    "stateSlug": "michigan",
-    "city": "Kalamazoo",
-    "lat": 42.2917,
-    "lng": -85.5872,
-    "description": "Michigan's largest drive-in with four screens showing a mix of current releases and classic films. Bel Air features a spacious concession stand and beautiful grounds.",
-    "amenities": ["FM radio sound", "Large concession stand", "Playground", "Four screens", "Picnic area"]
-  },
-  {
-    "name": "Vineland Drive-In",
-    "slug": "vineland-drive-in-vineland",
+    "name": "Van Buren Drive-in Theater",
+    "slug": "van-buren-drive-in-theater",
     "state": "California",
     "stateSlug": "california",
-    "city": "Vineland",
-    "lat": 33.3611,
-    "lng": -117.2914,
-    "description": "Southern California's classic drive-in theater with a nostalgic charm and modern amenities. Vineland features double features and a full-service snack bar.",
-    "amenities": ["FM radio sound", "Concession stand", "Picnic tables", "Double features", "Pet friendly"]
+    "city": "",
+    "lat": 33.911375,
+    "lng": -117.436156,
+    "description": "Van Buren Drive-in Theater is a drive-in movie theater in California. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://www.vanburendriveintheatre.com/"
   },
   {
-    "name": "Twin Drive-In",
-    "slug": "twin-drive-in-amarillo",
-    "state": "Texas",
-    "stateSlug": "texas",
-    "city": "Amarillo",
-    "lat": 35.0942,
-    "lng": -101.8413,
-    "description": "One of the last operating drive-ins in the Texas Panhandle, Twin offers a unique experience with two screens and classic Texas hospitality.",
-    "amenities": ["FM radio sound", "Concession stand", "Playground", "Double features", "Pet friendly"]
+    "name": "Superior 71 Drive-in Theater",
+    "slug": "superior-71-drive-in-theater",
+    "state": "Iowa",
+    "stateSlug": "iowa",
+    "city": "",
+    "lat": 43.432028,
+    "lng": -94.992368,
+    "description": "Superior 71 Drive-in Theater is a drive-in movie theater in Iowa. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://superior71drivein.com/"
+  },
+  {
+    "name": "El Rancho Drive-in",
+    "slug": "el-rancho-drive-in",
+    "state": "New York",
+    "stateSlug": "new-york",
+    "city": "",
+    "lat": 42.918527,
+    "lng": -74.593002,
+    "description": "El Rancho Drive-in is a drive-in movie theater in New York. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://elraoz29.wixsite.com/drive-in/el-rancho-drive-in"
+  },
+  {
+    "name": "Skyline Drive-In Theater",
+    "slug": "skyline-drive-in-theater",
+    "state": "Washington",
+    "stateSlug": "washington",
+    "city": "Shelton",
+    "lat": 47.145926,
+    "lng": -123.093362,
+    "description": "Skyline Drive-In Theater is a drive-in movie theater in Shelton, Washington. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "http://www.skylinedrive-in.com/"
+  },
+  {
+    "name": "Fair Oaks Drive-In",
+    "slug": "fair-oaks-drive-in",
+    "state": "New York",
+    "stateSlug": "new-york",
+    "city": "",
+    "lat": 41.525956,
+    "lng": -74.418439,
+    "description": "Fair Oaks Drive-In is a drive-in movie theater in New York. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "http://thefairoaksdrivein.com"
+  },
+  {
+    "name": "Weirs Drive-In Theater",
+    "slug": "weirs-drive-in-theater",
+    "state": "New Hampshire",
+    "stateSlug": "new-hampshire",
+    "city": "",
+    "lat": 43.602642,
+    "lng": -71.458399,
+    "description": "Weirs Drive-In Theater is a drive-in movie theater in New Hampshire. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://www.weirsdrivein.com/"
+  },
+  {
+    "name": "Verne Drive-In Theatre",
+    "slug": "verne-drive-in-theatre",
+    "state": "Minnesota",
+    "stateSlug": "minnesota",
+    "city": "Luverne",
+    "lat": 43.632646,
+    "lng": -96.211439,
+    "description": "Verne Drive-In Theatre is a drive-in movie theater in Luverne, Minnesota. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://vernedriveintheater.com/"
+  },
+  {
+    "name": "West Wind Solano Drive In",
+    "slug": "west-wind-solano-drive-in",
+    "state": "California",
+    "stateSlug": "california",
+    "city": "Concord",
+    "lat": 38.000086,
+    "lng": -122.049784,
+    "description": "West Wind Solano Drive In is a drive-in movie theater in Concord, California. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://www.westwinddi.com/locations/solano"
   },
   {
     "name": "Holiday Drive-In",
-    "slug": "holiday-drive-in-massena",
-    "state": "New York",
-    "stateSlug": "new-york",
-    "city": "Massena",
-    "lat": 45.0231,
-    "lng": -74.8962,
-    "description": "An upstate New York institution, Holiday Drive-In serves the northern region with summer blockbusters and classic films. Spacious grounds and family-friendly atmosphere.",
-    "amenities": ["FM radio sound", "Concession stand", "Playground", "Double features", "Picnic area"]
+    "slug": "holiday-drive-in",
+    "state": "Indiana",
+    "stateSlug": "indiana",
+    "city": "",
+    "lat": 38.702176,
+    "lng": -86.461814,
+    "description": "Holiday Drive-In is a drive-in movie theater in Indiana. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "http://www.holidaydrivein.biz/"
   },
   {
-    "name": "Sands Drive-In",
-    "slug": "sands-drive-in-brooksville",
-    "state": "Florida",
-    "stateSlug": "florida",
-    "city": "Brooksville",
-    "lat": 28.5543,
-    "lng": -82.3989,
-    "description": "Florida's sunny drive-in experience with year-round programming. Sands features comfortable seating, a full concession menu, and a beautiful outdoor setting.",
-    "amenities": ["FM radio sound", "Concession stand", "Playground", "Double features", "Pet friendly"]
+    "name": "Parma Drive-In",
+    "slug": "parma-drive-in",
+    "state": "Idaho",
+    "stateSlug": "idaho",
+    "city": "",
+    "lat": 43.800139,
+    "lng": -116.951105,
+    "description": "Parma Drive-In is a drive-in movie theater in Idaho. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "http://www.parmamotorvu.com/"
   },
   {
-    "name": "Elk Valley Drive-In",
-    "slug": "elk-valley-drive-in-erie",
-    "state": "Colorado",
-    "stateSlug": "colorado",
-    "city": "Erie",
-    "lat": 40.0468,
-    "lng": -104.8951,
-    "description": "Colorado's drive-in gem nestled near the Front Range. Elk Valley offers summer releases with stunning mountain views and a full-service concession stand.",
-    "amenities": ["FM radio sound", "Concession stand", "Picnic area", "Double features", "Mountain views"]
+    "name": "Winchester Drive In",
+    "slug": "winchester-drive-in",
+    "state": "Oklahoma",
+    "stateSlug": "oklahoma",
+    "city": "",
+    "lat": 35.395768,
+    "lng": -97.527225,
+    "description": "Winchester Drive In is a drive-in movie theater in Oklahoma. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ]
+  },
+  {
+    "name": "Midway Twin Drive-In Theatre",
+    "slug": "midway-twin-drive-in-theatre",
+    "state": "Ohio",
+    "stateSlug": "ohio",
+    "city": "",
+    "lat": 41.156983,
+    "lng": -81.295083,
+    "description": "Midway Twin Drive-In Theatre is a drive-in movie theater in Ohio. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "https://funflick.com/midway/"
+  },
+  {
+    "name": "Skyvue Drive-in",
+    "slug": "skyvue-drive-in",
+    "state": "Indiana",
+    "stateSlug": "indiana",
+    "city": "",
+    "lat": 39.862134,
+    "lng": -85.406867,
+    "description": "Skyvue Drive-in is a drive-in movie theater in Indiana. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ]
+  },
+  {
+    "name": "Moonlight Drive-In",
+    "slug": "moonlight-drive-in",
+    "state": "Tennessee",
+    "stateSlug": "tennessee",
+    "city": "Woodbury",
+    "lat": 35.823982,
+    "lng": -86.084039,
+    "description": "Moonlight Drive-In is a drive-in movie theater in Woodbury, Tennessee. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "http://themoonlite.com/"
+  },
+  {
+    "name": "Mansfield Drive-In Theatre",
+    "slug": "mansfield-drive-in-theatre",
+    "state": "Connecticut",
+    "stateSlug": "connecticut",
+    "city": "",
+    "lat": 41.741254,
+    "lng": -72.258064,
+    "description": "Mansfield Drive-In Theatre is a drive-in movie theater in Connecticut. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ],
+    "website": "http://www.mansfielddrivein.com/"
+  },
+  {
+    "name": "Midway Drive-in Theatre",
+    "slug": "midway-drive-in-theatre-2",
+    "state": "Pennsylvania",
+    "stateSlug": "pennsylvania",
+    "city": "Mifflintown",
+    "lat": 40.597919,
+    "lng": -77.419125,
+    "description": "Midway Drive-in Theatre is a drive-in movie theater in Mifflintown, Pennsylvania. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "amenities": [
+      "Drive-in screen",
+      "FM radio audio"
+    ]
   }
 ]
