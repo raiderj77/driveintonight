@@ -1,319 +1,123 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import locations from "@/data/locations.json";
+/* eslint-disable @next/next/no-img-element */
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import locations from '@/data/locations.json';
 
 export const revalidate = 86400;
 
-const states = [
-  "Alabama",
-  "Alaska",
-  "Arizona",
-  "Arkansas",
-  "California",
-  "Colorado",
-  "Connecticut",
-  "Delaware",
-  "Florida",
-  "Georgia",
-  "Hawaii",
-  "Idaho",
-  "Illinois",
-  "Indiana",
-  "Iowa",
-  "Kansas",
-  "Kentucky",
-  "Louisiana",
-  "Maine",
-  "Maryland",
-  "Massachusetts",
-  "Michigan",
-  "Minnesota",
-  "Mississippi",
-  "Missouri",
-  "Montana",
-  "Nebraska",
-  "Nevada",
-  "New Hampshire",
-  "New Jersey",
-  "New Mexico",
-  "New York",
-  "North Carolina",
-  "North Dakota",
-  "Ohio",
-  "Oklahoma",
-  "Oregon",
-  "Pennsylvania",
-  "Rhode Island",
-  "South Carolina",
-  "South Dakota",
-  "Tennessee",
-  "Texas",
-  "Utah",
-  "Vermont",
-  "Virginia",
-  "Washington",
-  "West Virginia",
-  "Wisconsin",
-  "Wyoming",
+const stateList = [
+  { name: 'Alabama', slug: 'alabama' }, { name: 'Alaska', slug: 'alaska' },
+  { name: 'Arizona', slug: 'arizona' }, { name: 'Arkansas', slug: 'arkansas' },
+  { name: 'California', slug: 'california' }, { name: 'Colorado', slug: 'colorado' },
+  { name: 'Connecticut', slug: 'connecticut' }, { name: 'Delaware', slug: 'delaware' },
+  { name: 'Florida', slug: 'florida' }, { name: 'Georgia', slug: 'georgia' },
+  { name: 'Hawaii', slug: 'hawaii' }, { name: 'Idaho', slug: 'idaho' },
+  { name: 'Illinois', slug: 'illinois' }, { name: 'Indiana', slug: 'indiana' },
+  { name: 'Iowa', slug: 'iowa' }, { name: 'Kansas', slug: 'kansas' },
+  { name: 'Kentucky', slug: 'kentucky' }, { name: 'Louisiana', slug: 'louisiana' },
+  { name: 'Maine', slug: 'maine' }, { name: 'Maryland', slug: 'maryland' },
+  { name: 'Massachusetts', slug: 'massachusetts' }, { name: 'Michigan', slug: 'michigan' },
+  { name: 'Minnesota', slug: 'minnesota' }, { name: 'Mississippi', slug: 'mississippi' },
+  { name: 'Missouri', slug: 'missouri' }, { name: 'Montana', slug: 'montana' },
+  { name: 'Nebraska', slug: 'nebraska' }, { name: 'Nevada', slug: 'nevada' },
+  { name: 'New Hampshire', slug: 'new-hampshire' }, { name: 'New Jersey', slug: 'new-jersey' },
+  { name: 'New Mexico', slug: 'new-mexico' }, { name: 'New York', slug: 'new-york' },
+  { name: 'North Carolina', slug: 'north-carolina' }, { name: 'North Dakota', slug: 'north-dakota' },
+  { name: 'Ohio', slug: 'ohio' }, { name: 'Oklahoma', slug: 'oklahoma' },
+  { name: 'Oregon', slug: 'oregon' }, { name: 'Pennsylvania', slug: 'pennsylvania' },
+  { name: 'Rhode Island', slug: 'rhode-island' }, { name: 'South Carolina', slug: 'south-carolina' },
+  { name: 'South Dakota', slug: 'south-dakota' }, { name: 'Tennessee', slug: 'tennessee' },
+  { name: 'Texas', slug: 'texas' }, { name: 'Utah', slug: 'utah' },
+  { name: 'Vermont', slug: 'vermont' }, { name: 'Virginia', slug: 'virginia' },
+  { name: 'Washington', slug: 'washington' }, { name: 'West Virginia', slug: 'west-virginia' },
+  { name: 'Wisconsin', slug: 'wisconsin' }, { name: 'Wyoming', slug: 'wyoming' },
 ];
 
-const stateSlug = (state: string) => state.toLowerCase().replace(/\s+/g, "-");
-const slugToState = (slug: string) =>
-  states.find((s) => stateSlug(s) === slug) || "Unknown";
-
-export async function generateStaticParams() {
-  return states.map((state) => ({
-    state: stateSlug(state),
-  }));
+function getStateName(slug: string) {
+  return stateList.find((s) => s.slug === slug)?.name ?? slug.split('-').map((w) => w[0].toUpperCase() + w.slice(1)).join(' ');
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ state: string }>;
-}): Promise<Metadata> {
-  const { state } = await params;
-  const stateName = slugToState(state);
-  const stateLocations = locations.filter(
-    (loc) => stateSlug(loc.state) === state
-  );
+export function generateStaticParams() {
+  return stateList.map((s) => ({ state: s.slug }));
+}
 
+export async function generateMetadata({ params }: { params: Promise<{ state: string }> }): Promise<Metadata> {
+  const { state } = await params;
+  const stateName = getStateName(state);
   return {
-    title: `Drive-In Theaters in ${stateName} | Drive-In Tonight`,
-    description: `Find ${stateLocations.length || "drive-in"} drive-in theaters in ${stateName}. Browse locations, amenities, and directions to the best drive-ins in ${stateName}.`,
-    openGraph: {
-      title: `Drive-In Theaters in ${stateName}`,
-      description: `Find drive-in theaters across ${stateName}`,
-      type: "website",
-      url: `https://driveintonight.com/${state}`,
-    },
+    title: `Drive-In Theaters in ${stateName}`,
+    description: `Find drive-in movie theaters in ${stateName}. Classic outdoor cinema with directions and amenity info.`,
+    alternates: { canonical: `https://driveintonight.com/${state}` },
   };
 }
 
-export default async function StatePage({
-  params,
-}: {
-  params: Promise<{ state: string }>;
-}) {
-  const { state } = await params;
-  const stateName = slugToState(state);
-  const stateLocations = locations.filter(
-    (loc) => stateSlug(loc.state) === state
-  );
+const IMG_KEYWORDS = ['drive+in+theater','outdoor+cinema+night','retro+movie','neon+cinema','drive+in+movie','vintage+theater','outdoor+movie+screen','cinema+night'];
 
-  const brandColor = "#1a0d3d";
-  const accentColor = "#ffcc00";
+export default async function StatePage({ params }: { params: Promise<{ state: string }> }) {
+  const { state } = await params;
+  const stateName = getStateName(state);
+  const spots = locations.filter((l) => l.stateSlug === state);
 
   return (
     <>
-      <div
-        style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: "2rem",
-        }}
-      >
-        {/* Breadcrumb */}
-        <nav style={{ marginBottom: "2rem" }}>
-          <Link
-            href="/"
-            style={{ color: brandColor, textDecoration: "none" }}
-          >
-            Home
-          </Link>
-          <span style={{ margin: "0 0.5rem" }}>/</span>
-          <span style={{ color: "#666" }}>{stateName}</span>
-        </nav>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        '@context':'https://schema.org','@type':'BreadcrumbList',
+        itemListElement:[
+          { '@type':'ListItem',position:1,name:'Home',item:'https://driveintonight.com'},
+          { '@type':'ListItem',position:2,name:stateName,item:`https://driveintonight.com/${state}`},
+        ],
+      }) }} />
 
-        <h1
-          style={{
-            fontSize: "2.5rem",
-            color: brandColor,
-            marginBottom: "1rem",
-          }}
-        >
-          Drive-In Theaters in {stateName}
-        </h1>
+      {/* Hero */}
+      <section style={{ position: 'relative', background: 'linear-gradient(180deg, var(--velvet) 0%, #0d0820 100%)', padding: '4rem 1.5rem 3.5rem', overflow: 'hidden' }}>
+        <div aria-hidden className="star-field" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }} />
+        <div aria-hidden style={{ position: 'absolute', top: 0, right: 0, width: '40%', height: '100%', background: `url("https://source.unsplash.com/1200x600/?drive+in+theater&sig=92") center/cover no-repeat`, opacity: 0.07, pointerEvents: 'none' }} />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <Link href="/" style={{ color: 'var(--neon-lt)', fontSize: '0.875rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', marginBottom: '1.5rem', fontWeight: 700, fontFamily: 'var(--font-body)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>← All States</Link>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem,5vw,3.5rem)', color: 'white', marginBottom: '0.75rem', letterSpacing: '0.04em' }}>
+            DRIVE-INS IN <span style={{ color: 'var(--neon)', textShadow: '0 0 20px rgba(255,45,120,0.5)' }}>{stateName.toUpperCase()}</span>
+          </h1>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+            <span className="chip chip-white">{spots.length} {spots.length===1?'Theater':'Theaters'} Listed</span>
+            <span style={{ color: 'var(--silver)', fontSize: '0.9rem', fontFamily: 'var(--font-body)' }}>Classic outdoor cinema</span>
+          </div>
+        </div>
+        <svg aria-hidden viewBox="0 0 1440 40" xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', display: 'block' }} preserveAspectRatio="none">
+          <path d="M0,20 C360,40 1080,0 1440,20 L1440,40 L0,40 Z" fill="var(--ivory)" />
+        </svg>
+      </section>
 
-        {stateLocations.length > 0 ? (
-          <>
-            <p
-              style={{
-                fontSize: "1.1rem",
-                color: "#666",
-                marginBottom: "2rem",
-              }}
-            >
-              Found {stateLocations.length} drive-in
-              {stateLocations.length !== 1 ? "s" : ""} in {stateName}
-            </p>
-
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-                gap: "2rem",
-                marginBottom: "3rem",
-              }}
-            >
-              {stateLocations.map((location) => (
-                <Link
-                  key={location.slug}
-                  href={`/${location.stateSlug}/${location.slug}`}
-                  style={{ textDecoration: "none" }}
-                >
-                  <div
-                    style={{
-                      backgroundColor: "#fff",
-                      border: `2px solid ${brandColor}`,
-                      borderRadius: "8px",
-                      padding: "1.5rem",
-                      cursor: "pointer",
-                      transition: "transform 0.3s, box-shadow 0.3s",
-                      height: "100%",
-                      display: "flex",
-                      flexDirection: "column",
-                    }}
-                  >
-                    <h3
-                      style={{
-                        margin: "0 0 0.5rem 0",
-                        color: brandColor,
-                        fontSize: "1.3rem",
-                      }}
-                    >
-                      {location.name}
-                    </h3>
-                    <p
-                      style={{
-                        margin: "0 0 0.5rem 0",
-                        color: "#666",
-                        fontSize: "0.9rem",
-                      }}
-                    >
-                      {location.city}, {location.state}
-                    </p>
-                    <p
-                      style={{
-                        margin: "0 0 1rem 0",
-                        color: "#555",
-                        fontSize: "0.95rem",
-                        flexGrow: 1,
-                      }}
-                    >
-                      {location.description}
-                    </p>
-                    <div
-                      style={{
-                        display: "flex",
-                        gap: "0.5rem",
-                        flexWrap: "wrap",
-                      }}
-                    >
-                      {location.amenities.slice(0, 3).map((amenity) => (
-                        <span
-                          key={amenity}
-                          style={{
-                            backgroundColor: accentColor,
-                            color: brandColor,
-                            padding: "0.3rem 0.6rem",
-                            borderRadius: "4px",
-                            fontSize: "0.8rem",
-                            fontWeight: "bold",
-                          }}
-                        >
-                          {amenity}
-                        </span>
-                      ))}
+      {/* Grid */}
+      <section style={{ padding: '4rem 1.5rem' }}>
+        <div className="container">
+          {spots.length > 0 ? (
+            <div className="grid-3">
+              {spots.map((spot, i) => (
+                <Link key={spot.slug} href={`/${state}/${spot.slug}`} style={{ textDecoration: 'none' }}>
+                  <article className="card">
+                    <img src={`https://source.unsplash.com/800x500/?${IMG_KEYWORDS[i%IMG_KEYWORDS.length]}&sig=${i+30}`} alt={spot.name} className="card-img" loading="lazy" width={800} height={500} />
+                    <div className="card-body">
+                      <div className="card-meta"><span>📍</span><span>{spot.city ? `${spot.city}, ` : ''}{spot.state}</span></div>
+                      <h2 className="card-title">{spot.name}</h2>
+                      <p style={{ fontSize: '0.875rem', color: '#667', lineHeight: 1.65, flex: 1, marginBottom: '1rem', fontFamily: 'var(--font-body)' }}>{spot.description.slice(0,100)}…</p>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
+                        {spot.amenities.slice(0,3).map((a) => <span key={a} className="chip">{a}</span>)}
+                      </div>
                     </div>
-                  </div>
+                  </article>
                 </Link>
               ))}
             </div>
-          </>
-        ) : (
-          <div
-            style={{
-              backgroundColor: "#f0f0f0",
-              padding: "2rem",
-              borderRadius: "8px",
-              textAlign: "center",
-              marginBottom: "3rem",
-            }}
-          >
-            <p style={{ fontSize: "1.1rem", color: "#666" }}>
-              Coming soon! We're working to add drive-in theaters in {stateName}{" "}
-              to our directory. Check back soon or visit other states to find
-              drive-ins near you.
-            </p>
-          </div>
-        )}
-
-        {/* Other States Section */}
-        <section
-          style={{
-            backgroundColor: "#fff",
-            padding: "2rem",
-            borderRadius: "8px",
-          }}
-        >
-          <h2 style={{ fontSize: "1.5rem", color: brandColor }}>
-            Browse Other States
-          </h2>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-              gap: "1rem",
-            }}
-          >
-            {states.map((s) => (
-              <Link
-                key={s}
-                href={`/${stateSlug(s)}`}
-                style={{
-                  backgroundColor: s === stateName ? accentColor : brandColor,
-                  color: s === stateName ? brandColor : "#fff",
-                  padding: "0.8rem",
-                  borderRadius: "4px",
-                  textAlign: "center",
-                  textDecoration: "none",
-                  fontWeight: "bold",
-                  fontSize: "0.9rem",
-                  transition: "background-color 0.3s",
-                }}
-              >
-                {s}
-              </Link>
-            ))}
-          </div>
-        </section>
-      </div>
-
-      {/* Breadcrumb Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: "https://driveintonight.com",
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: stateName,
-                item: `https://driveintonight.com/${state}`,
-              },
-            ],
-          }),
-        }}
-      />
+          ) : (
+            <div style={{ textAlign: 'center', padding: '5rem 2rem', background: 'var(--white)', borderRadius: 'var(--radius)', boxShadow: 'var(--shadow-card)' }}>
+              <p style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🎬</p>
+              <h2 style={{ fontFamily: 'var(--font-display)', color: 'var(--velvet)', marginBottom: '0.75rem', fontSize: '2rem', letterSpacing: '0.04em' }}>COMING SOON</h2>
+              <p style={{ color: 'var(--gray)', fontFamily: 'var(--font-body)' }}>{"We're adding drive-ins in "}{stateName}{" — check back soon!"}</p>
+              <Link href="/" className="btn btn-neon" style={{ display: 'inline-flex', marginTop: '1.5rem' }}>Browse Other States</Link>
+            </div>
+          )}
+        </div>
+      </section>
     </>
   );
 }
