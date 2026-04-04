@@ -1,0 +1,12 @@
+# Drive-In Tonight
+
+> Free directory of drive-in movie theaters across the United States. Find open drive-ins near you with showtimes, amenities, and directions.
+
+## Browse
+- [Home](https://driveintonight.com): Search all drive-in theaters
+- [By State](https://driveintonight.com/arkansas): Find drive-ins in your state
+
+## About
+- [About Us](https://driveintonight.com/about): About this directory
+- [Privacy Policy](https://driveintonight.com/privacy): How we handle data
+- [Contact](https://driveintonight.com/contact): Get in touch

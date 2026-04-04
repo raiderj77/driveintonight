@@ -1,0 +1,112 @@
+[
+  {
+    "name": "Skyview Drive-In",
+    "slug": "skyview-drive-in-fort-smith",
+    "state": "Arkansas",
+    "stateSlug": "arkansas",
+    "city": "Fort Smith",
+    "lat": 35.3859,
+    "lng": -94.3985,
+    "description": "One of America's longest-running drive-in theaters, Skyview has been entertaining families since 1949. Features double-feature programming and a classic concession stand with traditional drive-in fare.",
+    "amenities": ["FM radio sound", "Concession stand", "Playground", "Double features", "Pet friendly"]
+  },
+  {
+    "name": "Starlite Drive-In",
+    "slug": "starlite-drive-in-chillicothe",
+    "state": "Ohio",
+    "stateSlug": "ohio",
+    "city": "Chillicothe",
+    "lat": 39.3388,
+    "lng": -82.9750,
+    "description": "A classic drive-in experience in the heart of Ohio, Starlite offers double features on weekends and features a nostalgic concession stand with popcorn, candy, and hot dogs.",
+    "amenities": ["FM radio sound", "Concession stand", "Picnic tables", "Double features", "Family friendly"]
+  },
+  {
+    "name": "Moonlite Drive-In",
+    "slug": "moonlite-drive-in-lebanon",
+    "state": "Tennessee",
+    "stateSlug": "tennessee",
+    "city": "Lebanon",
+    "lat": 36.2067,
+    "lng": -86.2853,
+    "description": "Tennessee's premier drive-in theater featuring the latest releases with classic FM broadcast audio. Moonlite offers a full menu of concessions and a family-friendly atmosphere.",
+    "amenities": ["FM radio sound", "Full menu", "Playground", "Double features", "RV friendly"]
+  },
+  {
+    "name": "Sunset Drive-In",
+    "slug": "sunset-drive-in-knox",
+    "state": "Indiana",
+    "stateSlug": "indiana",
+    "city": "Knox",
+    "lat": 41.2938,
+    "lng": -86.6201,
+    "description": "A family favorite since 1952, Sunset Drive-In offers the classic drive-in experience with modern touches. Two screens show current releases throughout the summer season.",
+    "amenities": ["FM radio sound", "Concession stand", "Playground", "Double features", "Pet friendly"]
+  },
+  {
+    "name": "Bel Air Drive-In",
+    "slug": "bel-air-drive-in-kalamazoo",
+    "state": "Michigan",
+    "stateSlug": "michigan",
+    "city": "Kalamazoo",
+    "lat": 42.2917,
+    "lng": -85.5872,
+    "description": "Michigan's largest drive-in with four screens showing a mix of current releases and classic films. Bel Air features a spacious concession stand and beautiful grounds.",
+    "amenities": ["FM radio sound", "Large concession stand", "Playground", "Four screens", "Picnic area"]
+  },
+  {
+    "name": "Vineland Drive-In",
+    "slug": "vineland-drive-in-vineland",
+    "state": "California",
+    "stateSlug": "california",
+    "city": "Vineland",
+    "lat": 33.3611,
+    "lng": -117.2914,
+    "description": "Southern California's classic drive-in theater with a nostalgic charm and modern amenities. Vineland features double features and a full-service snack bar.",
+    "amenities": ["FM radio sound", "Concession stand", "Picnic tables", "Double features", "Pet friendly"]
+  },
+  {
+    "name": "Twin Drive-In",
+    "slug": "twin-drive-in-amarillo",
+    "state": "Texas",
+    "stateSlug": "texas",
+    "city": "Amarillo",
+    "lat": 35.0942,
+    "lng": -101.8413,
+    "description": "One of the last operating drive-ins in the Texas Panhandle, Twin offers a unique experience with two screens and classic Texas hospitality.",
+    "amenities": ["FM radio sound", "Concession stand", "Playground", "Double features", "Pet friendly"]
+  },
+  {
+    "name": "Holiday Drive-In",
+    "slug": "holiday-drive-in-massena",
+    "state": "New York",
+    "stateSlug": "new-york",
+    "city": "Massena",
+    "lat": 45.0231,
+    "lng": -74.8962,
+    "description": "An upstate New York institution, Holiday Drive-In serves the northern region with summer blockbusters and classic films. Spacious grounds and family-friendly atmosphere.",
+    "amenities": ["FM radio sound", "Concession stand", "Playground", "Double features", "Picnic area"]
+  },
+  {
+    "name": "Sands Drive-In",
+    "slug": "sands-drive-in-brooksville",
+    "state": "Florida",
+    "stateSlug": "florida",
+    "city": "Brooksville",
+    "lat": 28.5543,
+    "lng": -82.3989,
+    "description": "Florida's sunny drive-in experience with year-round programming. Sands features comfortable seating, a full concession menu, and a beautiful outdoor setting.",
+    "amenities": ["FM radio sound", "Concession stand", "Playground", "Double features", "Pet friendly"]
+  },
+  {
+    "name": "Elk Valley Drive-In",
+    "slug": "elk-valley-drive-in-erie",
+    "state": "Colorado",
+    "stateSlug": "colorado",
+    "city": "Erie",
+    "lat": 40.0468,
+    "lng": -104.8951,
+    "description": "Colorado's drive-in gem nestled near the Front Range. Elk Valley offers summer releases with stunning mountain views and a full-service concession stand.",
+    "amenities": ["FM radio sound", "Concession stand", "Picnic area", "Double features", "Mountain views"]
+  }
+]
