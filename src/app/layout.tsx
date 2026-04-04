@@ -42,7 +42,8 @@ export const metadata: Metadata = {
     description:
       "Free directory of drive-in movie theaters across the United States.",
   },
-  canonical: "https://driveintonight.com",
+  alternates: { canonical: "https://driveintonight.com" },
+  verification: { google: "7DeasPCFCDL-ColW4v6ONqKH8jIPNRNoVLxXRmsgpUg" },
   metadataBase: new URL("https://driveintonight.com"),
 };
 
