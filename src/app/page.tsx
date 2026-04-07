@@ -31,7 +31,54 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         '@context':'https://schema.org','@type':'WebSite',url:'https://driveintonight.com',
         name:'Drive-In Tonight',
+        dateModified:'2026-04-07',
         potentialAction:{'@type':'SearchAction',target:{'@type':'EntryPoint',urlTemplate:'https://driveintonight.com/search?q={search_term_string}'},'query-input':'required name=search_term_string'},
+      }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        '@context':'https://schema.org','@type':'Organization',
+        name:'Drive-In Tonight',
+        url:'https://driveintonight.com',
+        description:'Directory of drive-in movie theaters across the United States',
+        dateModified:'2026-04-07',
+      }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        '@context':'https://schema.org','@type':'LocalBusiness',
+        name:'Drive-In Tonight Directory',
+        url:'https://driveintonight.com',
+        description:'Find drive-in movie theaters near you across the United States',
+        areaServed:'United States',
+        dateModified:'2026-04-07',
+      }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        '@context':'https://schema.org','@type':'FAQPage',
+        dateModified:'2026-04-07',
+        mainEntity:[
+          {
+            '@type':'Question',
+            name:'How do I find a drive-in movie theater near me?',
+            acceptedAnswer:{'@type':'Answer',text:'Use the Drive-In Tonight directory to search by state or city. Each listing includes the theater address, current showtimes, screen count, admission prices, and whether the theater uses FM radio or a dedicated app for audio.'},
+          },
+          {
+            '@type':'Question',
+            name:'How does sound work at a drive-in movie theater?',
+            acceptedAnswer:{'@type':'Answer',text:'Most modern drive-in theaters broadcast audio over a dedicated FM radio frequency that you tune to on your car stereo. Some theaters use a free mobile app. The radio frequency is posted on signage at the entrance and listed in each theater\'s directory entry.'},
+          },
+          {
+            '@type':'Question',
+            name:'How much does it cost to attend a drive-in movie?',
+            acceptedAnswer:{'@type':'Answer',text:'Drive-in admission typically ranges from $8 to $15 per person, often with reduced prices for children under 12. Many drive-ins charge per carload rather than per person for certain showings. Pricing varies by location and is subject to change — always check the theater listing or website for current prices.'},
+          },
+          {
+            '@type':'Question',
+            name:'What should I bring to a drive-in movie theater?',
+            acceptedAnswer:{'@type':'Answer',text:'Bring blankets, pillows, lawn chairs, insect repellent, and snacks — though most drive-ins have a concession stand. Arrive 30 to 60 minutes early for good parking. Charge your car battery if planning to run the radio for extended periods, or bring a portable Bluetooth speaker as a backup.'},
+          },
+          {
+            '@type':'Question',
+            name:'Are drive-in movie theaters still open today?',
+            acceptedAnswer:{'@type':'Answer',text:'Yes — approximately 300 drive-in movie theaters remain open across the United States, a fraction of the over 4,000 that existed in the 1950s peak. Drive-ins have seen a resurgence since 2020 and many have upgraded to digital projection and modern facilities.'},
+          },
+        ],
       }) }} />
 
       {/* Hero — star field with neon glow */}
@@ -150,17 +197,48 @@ export default function Home() {
             <h2 className="section-title">FAQ</h2>
           </div>
           {[
-            { q:'How do I hear the audio at a drive-in?', a:'Most modern drive-ins broadcast audio on a specific FM radio frequency. You tune your car radio to that channel. Some older theaters use in-car speaker posts, but FM is most common.' },
-            { q:'Do drive-ins show current movies?', a:'Yes! Many drive-ins show first-run films, often as double features. This makes them an incredible value compared to traditional cinemas.' },
-            { q:'What should I bring to a drive-in?', a:'Bring a portable FM radio (in case your car battery drains), blankets, lawn chairs, snacks, bug spray for summer visits, and cash for the concession stand.' },
-            { q:'Are drive-ins family friendly?', a:'Absolutely. Drive-ins are a family tradition. Children often sleep in the back seat during the second feature. Check the movie ratings before attending with young kids.' },
-            { q:'Do I need a reservation?', a:'Many drive-ins now sell tickets online in advance, especially on weekends. Always check the theater website as popular shows can sell out.' },
+            { q:'How do I find a drive-in movie theater near me?', a:'Use the Drive-In Tonight directory to search by state or city. Each listing includes the theater address, current showtimes, screen count, admission prices, and whether the theater uses FM radio or a dedicated app for audio.' },
+            { q:'How does sound work at a drive-in movie theater?', a:'Most modern drive-in theaters broadcast audio over a dedicated FM radio frequency that you tune to on your car stereo. Some theaters use a free mobile app. The radio frequency is posted on signage at the entrance and listed in each theater\'s directory entry.' },
+            { q:'How much does it cost to attend a drive-in movie?', a:'Drive-in admission typically ranges from $8 to $15 per person, often with reduced prices for children under 12. Many drive-ins charge per carload rather than per person for certain showings. Pricing varies by location and is subject to change — always check the theater listing or website for current prices.' },
+            { q:'What should I bring to a drive-in movie theater?', a:'Bring blankets, pillows, lawn chairs, insect repellent, and snacks — though most drive-ins have a concession stand. Arrive 30 to 60 minutes early for good parking. Charge your car battery if planning to run the radio for extended periods, or bring a portable Bluetooth speaker as a backup.' },
+            { q:'Are drive-in movie theaters still open today?', a:'Yes — approximately 300 drive-in movie theaters remain open across the United States, a fraction of the over 4,000 that existed in the 1950s peak. Drive-ins have seen a resurgence since 2020 and many have upgraded to digital projection and modern facilities.' },
           ].map(({q,a}) => (
             <details key={q} className="faq-item">
               <summary>{q}</summary>
               <div className="faq-answer">{a}</div>
             </details>
           ))}
+        </div>
+      </section>
+
+      {/* GEO Content Sections */}
+      <section style={{ padding: '5rem 1.5rem' }}>
+        <div className="container" style={{ maxWidth: '860px' }}>
+
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', color: 'var(--velvet)', marginBottom: '0.75rem', letterSpacing: '0.04em' }}>How to Have the Best Drive-In Movie Experience</h2>
+          <p style={{ fontWeight: 600, lineHeight: 1.75, marginBottom: '1rem', fontFamily: 'var(--font-body)' }}>Arrive 30 to 60 minutes before showtime to get your preferred spot. Tune to the posted FM frequency for sound, and bring blankets and snacks — most drive-ins allow outside food.</p>
+          <p style={{ lineHeight: 1.85, marginBottom: '2.5rem', fontFamily: 'var(--font-body)' }}>Parking strategy matters: front rows put you close to the screen but may require tilting your head, while mid-lot spots offer the best viewing angle. Test your FM radio before the feature starts and keep the engine off to preserve battery — many regulars bring a portable Bluetooth speaker as backup for a double feature. Approximately 300 drive-in theaters remain open across the United States, so each one is worth the extra planning to enjoy fully.</p>
+
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', color: 'var(--velvet)', marginBottom: '0.75rem', letterSpacing: '0.04em' }}>Why Are Drive-In Movie Theaters Making a Comeback?</h2>
+          <p style={{ fontWeight: 600, lineHeight: 1.75, marginBottom: '1rem', fontFamily: 'var(--font-body)' }}>Drive-ins offer a unique outdoor movie experience that indoor theaters cannot replicate — privacy, fresh air, and the ability to bring pets, children, and your own snacks make them increasingly popular.</p>
+          <p style={{ lineHeight: 1.85, marginBottom: '2.5rem', fontFamily: 'var(--font-body)' }}>Drive-in theater attendance surged over 40% between 2019 and 2021, according to the United Drive-In Theatre Owners Association, as audiences sought open-air venues during the shift toward outdoor entertainment. That momentum has continued, with many operators investing in laser projection, upgraded concession menus, and themed event nights to attract new generations. The United States has more operating drive-in theaters than any other country, with the highest concentrations in Pennsylvania, New York, and Ohio.</p>
+
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', color: 'var(--velvet)', marginBottom: '0.75rem', letterSpacing: '0.04em' }}>What Movies Are Typically Shown at Drive-In Theaters?</h2>
+          <p style={{ fontWeight: 600, lineHeight: 1.75, marginBottom: '1rem', fontFamily: 'var(--font-body)' }}>Drive-ins show current Hollywood releases, often programming double features for a single admission price. Many also host classic film nights, holiday screenings, and special events throughout the year.</p>
+          <p style={{ lineHeight: 1.85, marginBottom: '2.5rem', fontFamily: 'var(--font-body)' }}>The double feature tradition remains alive at most drive-ins, offering two films back-to-back for one ticket — a value unmatched by traditional cinemas. Drive-ins license films through the same distribution channels as indoor theaters, so first-run releases are common. Special event programming includes Halloween horror marathons, Fourth of July fireworks screenings, holiday classics in December, and retro film nights that draw audiences who may never have seen a drive-in before.</p>
+
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', color: 'var(--velvet)', marginBottom: '0.75rem', letterSpacing: '0.04em' }}>How Do I Know if a Drive-In Theater Is Still Operating?</h2>
+          <p style={{ fontWeight: 600, lineHeight: 1.75, marginBottom: '1rem', fontFamily: 'var(--font-body)' }}>Check the theater&apos;s listing for current operating status, seasonal hours, and contact information. Many drive-ins operate seasonally from April through October in northern climates.</p>
+          <p style={{ lineHeight: 1.85, marginBottom: '2.5rem', fontFamily: 'var(--font-body)' }}>Always verify hours directly with the theater before making a trip — this directory is updated regularly, but individual theater schedules and seasonal closures can change without notice. Approximately 300 drive-in movie theaters remain open across the United States, down from over 4,000 at the peak in the 1950s, so confirming a theater is active before you travel is always worth the extra step.</p>
+
+          <div style={{ borderTop: '1px solid rgba(255,45,120,0.12)', paddingTop: '2rem', marginTop: '1rem' }}>
+            <h3 style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.14em', color: '#888', marginBottom: '1rem' }}>Further Reading</h3>
+            <ul style={{ listStyle: 'none', display: 'flex', flexWrap: 'wrap', gap: '1.25rem' }}>
+              <li><a href="https://www.uditoa.org" target="_blank" rel="noopener noreferrer nofollow" style={{ color: 'var(--velvet)', fontSize: '0.9rem', fontFamily: 'var(--font-body)' }}>United Drive-In Theatre Owners Association</a></li>
+              <li><a href="https://www.loc.gov/search/?q=drive-in+theater" target="_blank" rel="noopener noreferrer nofollow" style={{ color: 'var(--velvet)', fontSize: '0.9rem', fontFamily: 'var(--font-body)' }}>Library of Congress — Drive-In Theater History</a></li>
+              <li><a href="https://www.natoonline.org" target="_blank" rel="noopener noreferrer nofollow" style={{ color: 'var(--velvet)', fontSize: '0.9rem', fontFamily: 'var(--font-body)' }}>National Association of Theatre Owners</a></li>
+            </ul>
+          </div>
         </div>
       </section>
 
