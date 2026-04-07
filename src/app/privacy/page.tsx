@@ -60,24 +60,46 @@ export default function Privacy() {
         </h2>
         <h3 style={{ fontSize: "1.1rem", color: "#555" }}>Google AdSense</h3>
         <p>
-          This website uses Google AdSense to display advertisements. Google may
-          use cookies to serve ads based on your prior visits to this website or
-          other websites. You can opt out of personalized advertising by visiting
-          the Google Ads Settings page.
+          We work with third-party advertising partners, including Google, who
+          may use cookies to serve ads based on your prior visits to this
+          website or other websites.
         </p>
         <p>
-          Google's use of cookies enables it and its partners to serve ads to
-          users based on their visit to your sites and/or other sites on the
-          Internet.
+          This website uses Google AdSense to display advertisements. Google
+          and its partners use cookies to serve ads based on your prior visits
+          to this website or other websites. Google&apos;s use of advertising
+          cookies enables it and its partners to serve ads based on your visit
+          to this site and/or other sites on the Internet.
+        </p>
+        <p>
+          You may opt out of personalized advertising by visiting{" "}
+          <a href="https://ads.google.com/settings" target="_blank" rel="noopener noreferrer" style={{ color: brandColor }}>
+            Google Ads Settings
+          </a>
+          . You may also opt out of interest-based advertising from participating
+          third-party advertisers by visiting{" "}
+          <a href="https://optout.aboutads.info" target="_blank" rel="noopener noreferrer" style={{ color: brandColor }}>
+            optout.aboutads.info
+          </a>
+          .
         </p>
 
         <h2 style={{ fontSize: "1.3rem", color: brandColor, marginTop: "2rem" }}>
           3. Cookies
         </h2>
         <p>
-          Our website may use cookies for analytics and advertising purposes.
+          Our website uses cookies for analytics and advertising purposes.
           These cookies may be set by third-party providers including Google.
           You can control cookie settings through your browser preferences.
+          To opt out of personalized advertising, visit{" "}
+          <a href="https://ads.google.com/settings" target="_blank" rel="noopener noreferrer" style={{ color: brandColor }}>
+            ads.google.com/settings
+          </a>
+          {" "}or{" "}
+          <a href="https://optout.aboutads.info" target="_blank" rel="noopener noreferrer" style={{ color: brandColor }}>
+            optout.aboutads.info
+          </a>
+          .
         </p>
 
         <h2 style={{ fontSize: "1.3rem", color: brandColor, marginTop: "2rem" }}>
