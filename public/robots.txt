@@ -62,12 +62,11 @@ Disallow: /
 User-agent: Bytespider
 Disallow: /
 
-# Default Rules
+# Default rule — paused for editorial investment
 User-agent: *
-Allow: /
-Disallow: /api/
-Disallow: /admin/
-Disallow: /private/
+Disallow: /
+Allow: /robots.txt
+Allow: /sitemap.xml
 
 # Sitemap
 Sitemap: https://driveintonight.com/sitemap.xml

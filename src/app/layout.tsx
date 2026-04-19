@@ -13,7 +13,11 @@ export const metadata: Metadata = {
   keywords: 'drive-in theater, drive-in movie, outdoor movie, drive-in near me, classic drive-in',
   metadataBase: new URL('https://driveintonight.com'),
   alternates: { canonical: 'https://driveintonight.com' },
-  robots: 'index, follow, max-snippet:-1',
+  robots: {
+    index: false,
+    follow: true,
+    googleBot: { index: false, follow: true },
+  },
   verification: { google: '7DeasPCFCDL-ColW4v6ONqKH8jIPNRNoVLxXRmsgpUg' },
 };
 
