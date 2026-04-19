@@ -155,7 +155,30 @@ export default function Privacy() {
         </p>
 
         <h2 style={{ fontSize: "1.3rem", color: brandColor, marginTop: "2rem" }}>
-          9. Changes to This Policy
+          9. MODPA — Maryland Online Data Privacy Act
+        </h2>
+        <p>
+          As of April 1, 2026, Drive-In Tonight complies with the Maryland Online Data Privacy Act (MODPA). Maryland residents have the following consumer rights:
+        </p>
+        <ul>
+          <li><strong>Right to Access:</strong> You may request to know what personal data we have collected about you.</li>
+          <li><strong>Right to Correct:</strong> You may request correction of inaccurate personal data.</li>
+          <li><strong>Right to Delete:</strong> You may request deletion of personal data collected from you.</li>
+          <li><strong>Right to Opt-Out:</strong> You may opt out of the sale or sharing of your personal data for targeted advertising purposes.</li>
+          <li><strong>Right to Data Portability:</strong> You may request a copy of your personal data in a portable format.</li>
+        </ul>
+        <p>
+          <strong>Global Privacy Control (GPC):</strong> Drive-In Tonight honors Global Privacy Control (GPC) signals. If you have GPC enabled in your browser, we will treat it as a universal opt-out signal and apply the strictest privacy settings.
+        </p>
+        <p>
+          <strong>No Sale of Data:</strong> Drive-In Tonight does not sell personal data.
+        </p>
+        <p>
+          <strong>Consumer Rights Requests:</strong> We will respond to verified consumer rights requests within 45 days. To submit a request, contact us at <a href="mailto:privacy@driveintonight.com" style={{ color: brandColor }}>privacy@driveintonight.com</a>.
+        </p>
+
+        <h2 style={{ fontSize: "1.3rem", color: brandColor, marginTop: "2rem" }}>
+          10. Changes to This Policy
         </h2>
         <p>
           We may update this privacy policy from time to time. Changes will be
@@ -163,7 +186,7 @@ export default function Privacy() {
         </p>
 
         <h2 style={{ fontSize: "1.3rem", color: brandColor, marginTop: "2rem" }}>
-          10. Contact Us
+          11. Contact Us
         </h2>
         <p>
           If you have questions about this privacy policy or our privacy
