@@ -1,4 +1,4 @@
-﻿# Drive-In Tonight — CLAUDE.md
+﻿# Drive-In Tonight, CLAUDE.md
 
 > Source of truth for Claude Code on this project. Last updated: 2026-04-30
 
@@ -23,7 +23,7 @@
 
 - SSR/SSG required
 - Each drive-in page: name, address, current movie schedule (if available), screen count, AM radio frequency for sound, seasonal hours
-- Schedule data is time-sensitive — include lastmod dates and "verify before visiting" disclaimers
+- Schedule data is time-sensitive, include lastmod dates and "verify before visiting" disclaimers
 
 ## 3. Core Web Vitals
 
@@ -31,7 +31,7 @@
 
 ## 4. E-E-A-T
 
-- Attribution: "Built by an experienced web developer" — no personal name
+- Attribution: "Built by an experienced web developer", no personal name
 - "Always verify current showtimes directly with the theater" disclaimer on every location page
 
 ## 5. Structured Data
@@ -78,4 +78,4 @@ Vercel | main | `npm run build` | Env: INDEXNOW_API_KEY
 
 ## Warnings
 
-Standard Empire warnings + Never present schedule data as guaranteed current — always include "verify directly with theater" disclaimer
+Standard Empire warnings + Never present schedule data as guaranteed current, always include "verify directly with theater" disclaimer

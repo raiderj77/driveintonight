@@ -132,7 +132,7 @@ export default function About() {
           Why Drive-In Theaters Matter
         </h2>
         <p>
-          Drive-in theaters are more than just movie venues—they're cultural
+          Drive-in theaters are more than just movie venues, they're cultural
           institutions and gathering places. The drive-in experience offers
           something special: the freedom to watch movies under the stars with
           family and friends, the nostalgia of a bygone era, and the unique

@@ -155,7 +155,7 @@ export default function Privacy() {
         </p>
 
         <h2 style={{ fontSize: "1.3rem", color: brandColor, marginTop: "2rem" }}>
-          9. MODPA — Maryland Online Data Privacy Act
+          9. MODPA, Maryland Online Data Privacy Act
         </h2>
         <p>
           As of April 1, 2026, Drive-In Tonight complies with the Maryland Online Data Privacy Act (MODPA). Maryland residents have the following consumer rights:

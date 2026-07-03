@@ -8,7 +8,7 @@ const bebasNeue = Bebas_Neue({ subsets: ['latin'], variable: '--font-display', d
 const barlow = Barlow({ subsets: ['latin'], variable: '--font-body', display: 'swap', weight: ['400','500','600','700'] });
 
 export const metadata: Metadata = {
-  title: { template: '%s | Drive-In Tonight', default: 'Drive-In Tonight — Find Drive-In Theaters Across America' },
+  title: { template: '%s | Drive-In Tonight', default: 'Drive-In Tonight, Find Drive-In Theaters Across America' },
   description: 'Find drive-in movie theaters near you. Classic and modern drive-ins across all 50 states with showtimes, amenities, and directions.',
   keywords: 'drive-in theater, drive-in movie, outdoor movie, drive-in near me, classic drive-in',
   metadataBase: new URL('https://driveintonight.com'),

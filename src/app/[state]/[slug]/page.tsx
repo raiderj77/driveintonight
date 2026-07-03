@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
   const location = locations.find((l) => l.slug === slug);
   const stateName = getStateName(state);
   return {
-    title: `${location?.name ?? 'Drive-In Theater'} — Drive-In in ${stateName}`,
+    title: `${location?.name ?? 'Drive-In Theater'}, Drive-In in ${stateName}`,
     description: location?.description ?? `Drive-in movie theater in ${stateName}. Classic outdoor cinema experience.`,
     alternates: { canonical: `https://driveintonight.com/${state}/${slug}` },
     openGraph: { title: `${location?.name} | Drive-In Tonight`, description: location?.description, url: `https://driveintonight.com/${state}/${slug}` },
@@ -186,7 +186,7 @@ export default async function DriveInPage({ params }: { params: Promise<{ state:
             </div>
           </div>
 
-          {/* Right — sticky panel */}
+          {/* Right, sticky panel */}
           <aside>
             <div style={{ background: 'var(--white)', borderRadius: 'var(--radius)', boxShadow: 'var(--shadow-card)', overflow: 'hidden', border: '1px solid rgba(255,45,120,0.15)', position: 'sticky', top: '90px' }}>
               <div style={{ background: 'var(--velvet)', padding: '1.25rem 1.5rem', borderBottom: '2px solid var(--neon)' }}>
