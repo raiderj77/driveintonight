@@ -64,6 +64,7 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     title: `${location?.name ?? 'Drive-In Theater'}, Drive-In in ${stateName}`,
     description: location?.description ?? `Drive-in movie theater in ${stateName}. Classic outdoor cinema experience.`,
     alternates: { canonical: `https://driveintonight.com/${state}/${slug}` },
+    robots: { index: false, follow: true, googleBot: { index: false, follow: true } },
     openGraph: { title: `${location?.name} | Drive-In Tonight`, description: location?.description, url: `https://driveintonight.com/${state}/${slug}` },
   };
 }
