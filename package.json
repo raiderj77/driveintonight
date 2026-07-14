@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "test:privacy": "node --test tests/privacy-security.test.mjs",
-    "test:index": "node --test tests/index-quality.test.mjs"
+    "test:index": "node --test tests/index-quality.test.mjs",
+    "test:guides": "node --test tests/guide-quality.test.mjs"
   },
   "dependencies": {
     "next": "15.5.20",
