@@ -63,6 +63,7 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     title: `Drive-In Theaters in ${stateName}`,
     description: `Find drive-in movie theaters in ${stateName}. Classic outdoor cinema with directions and amenity info.`,
     alternates: { canonical: `https://driveintonight.com/${state}` },
+    robots: { index: false, follow: true, googleBot: { index: false, follow: true } },
   };
 }
 

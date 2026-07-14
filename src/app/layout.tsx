@@ -12,9 +12,9 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://driveintonight.com'),
   alternates: { canonical: 'https://driveintonight.com' },
   robots: {
-    index: false,
+    index: true,
     follow: true,
-    googleBot: { index: false, follow: true },
+    googleBot: { index: true, follow: true },
   },
   verification: { google: '7DeasPCFCDL-ColW4v6ONqKH8jIPNRNoVLxXRmsgpUg' },
 };
