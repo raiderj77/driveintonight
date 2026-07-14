@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { TheaterGuideContent } from '@/components/theater-guide';
+import { getTheaterGuide } from '@/content/theater-guides';
 import locations from '@/data/locations.json';
 
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN ?? '';
@@ -58,14 +60,21 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ state: string; slug: string }> }): Promise<Metadata> {
   const { state, slug } = await params;
-  const location = locations.find((l) => l.slug === slug);
+  const location = locations.find((l) => l.slug === slug && l.stateSlug === state);
+  const guide = getTheaterGuide(state, slug);
   const stateName = getStateName(state);
   return {
     title: `${location?.name ?? 'Drive-In Theater'}, Drive-In in ${stateName}`,
-    description: location?.description ?? `Drive-in movie theater in ${stateName}. Classic outdoor cinema experience.`,
+    description: guide?.seoDescription ?? location?.description ?? `Drive-in movie theater in ${stateName}. Classic outdoor cinema experience.`,
     alternates: { canonical: `https://driveintonight.com/${state}/${slug}` },
-    robots: { index: false, follow: true, googleBot: { index: false, follow: true } },
-    openGraph: { title: `${location?.name} | Drive-In Tonight`, description: location?.description, url: `https://driveintonight.com/${state}/${slug}` },
+    robots: guide
+      ? { index: true, follow: true, googleBot: { index: true, follow: true } }
+      : { index: false, follow: true, googleBot: { index: false, follow: true } },
+    openGraph: {
+      title: `${location?.name} | Drive-In Tonight`,
+      description: guide?.seoDescription ?? location?.description,
+      url: `https://driveintonight.com/${state}/${slug}`,
+    },
   };
 }
 
@@ -78,7 +87,8 @@ const AMENITY_ICONS: Record<string, string> = {
 
 export default async function DriveInPage({ params }: { params: Promise<{ state: string; slug: string }> }) {
   const { state, slug } = await params;
-  const location = locations.find((l) => l.slug === slug);
+  const location = locations.find((l) => l.slug === slug && l.stateSlug === state);
+  const guide = getTheaterGuide(state, slug);
   const stateName = getStateName(state);
 
   if (!location) {
@@ -105,11 +115,36 @@ export default async function DriveInPage({ params }: { params: Promise<{ state:
       }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         '@context': 'https://schema.org', '@type': 'MovieTheater',
-        name: location.name, description: location.description,
+        name: location.name, description: guide?.seoDescription ?? location.description,
         geo: { '@type': 'GeoCoordinates', latitude: location.lat, longitude: location.lng },
-        address: { '@type': 'PostalAddress', addressLocality: location.city, addressRegion: location.state, addressCountry: 'US' },
+        address: {
+          '@type': 'PostalAddress',
+          ...(guide ? {
+            streetAddress: guide.address.street,
+            addressLocality: guide.address.city,
+            addressRegion: guide.address.state,
+            postalCode: guide.address.postalCode,
+          } : {
+            addressLocality: location.city,
+            addressRegion: location.state,
+          }),
+          addressCountry: 'US',
+        },
         amenityFeature: location.amenities.map((a) => ({ '@type': 'LocationFeatureSpecification', name: a, value: true })),
+        url: `https://driveintonight.com/${state}/${slug}`,
+        ...(location.website ? { sameAs: location.website } : {}),
       }) }} />
+      {guide && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: guide.faqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+          })),
+        }) }} />
+      )}
 
       {/* Hero */}
       <div style={{ position: 'relative', height: '450px', overflow: 'hidden', background: 'linear-gradient(160deg, var(--velvet) 0%, var(--velvet-mid) 100%)' }}>
@@ -138,7 +173,7 @@ export default async function DriveInPage({ params }: { params: Promise<{ state:
 
       {/* Main content */}
       <section style={{ padding: '4rem 1.5rem' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: '3rem', alignItems: 'start' }}>
+        <div className="container detail-layout" style={{ display: 'grid', gap: '3rem', alignItems: 'start' }}>
 
           {/* Left */}
           <div>
@@ -216,6 +251,8 @@ export default async function DriveInPage({ params }: { params: Promise<{ state:
           </aside>
         </div>
       </section>
+
+      {guide && <TheaterGuideContent guide={guide} theaterName={location.name} />}
 
       {/* Related */}
       {related.length > 0 && (

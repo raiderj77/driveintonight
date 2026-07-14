@@ -41,12 +41,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <header style={{ background: 'var(--velvet)', borderBottom: '3px solid var(--neon)', position: 'sticky', top: 0, zIndex: 1000, boxShadow: '0 2px 24px rgba(255,45,120,0.2)' }}>
-          <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.9rem 1.5rem' }}>
-            <a href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+          <div className="container site-header__inner">
+            <a href="/" className="site-logo" style={{ textDecoration: 'none' }}>
               <span style={{ fontSize: '1.5rem', lineHeight: 1 }}>🎬</span>
-              <span style={{ fontFamily: 'var(--font-display)', fontWeight: 400, fontSize: '1.5rem', color: 'var(--neon-lt)', letterSpacing: '0.08em' }}>DRIVE-IN TONIGHT</span>
+              <span className="site-logo__text" style={{ fontFamily: 'var(--font-display)', fontWeight: 400, color: 'var(--neon-lt)', letterSpacing: '0.08em' }}>DRIVE-IN TONIGHT</span>
             </a>
-            <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+            <nav className="site-nav" aria-label="Primary navigation">
               <a href="/" style={{ color: 'var(--neon-pale)', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none', fontFamily: 'var(--font-body)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Home</a>
               <a href="/browse-states" style={{ color: 'var(--neon-pale)', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none', fontFamily: 'var(--font-body)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Browse</a>
               <a href="/about" style={{ color: 'var(--neon-pale)', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none', fontFamily: 'var(--font-body)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>About</a>

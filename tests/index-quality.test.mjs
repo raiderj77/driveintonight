@@ -9,12 +9,13 @@ test('the homepage and trust pages may be indexed', () => {
   assert.match(layout, /robots:\s*{[\s\S]*?index:\s*true,[\s\S]*?googleBot:\s*{\s*index:\s*true/);
 });
 
-test('thin state and listing routes remain noindex,follow', () => {
-  for (const path of ['src/app/[state]/page.tsx', 'src/app/[state]/[slug]/page.tsx']) {
-    const source = read(path);
-    assert.match(source, /robots:\s*{\s*index:\s*false,\s*follow:\s*true/);
-    assert.match(source, /googleBot:\s*{\s*index:\s*false,\s*follow:\s*true/);
-  }
+test('state pages and unverified listings retain a noindex,follow fallback', () => {
+  const statePage = read('src/app/[state]/page.tsx');
+  const listingPage = read('src/app/[state]/[slug]/page.tsx');
+
+  assert.match(statePage, /robots:\s*{\s*index:\s*false,\s*follow:\s*true/);
+  assert.match(listingPage, /robots:\s*guide[\s\S]*?:\s*{\s*index:\s*false,\s*follow:\s*true/);
+  assert.match(listingPage, /googleBot:\s*{\s*index:\s*false,\s*follow:\s*true/);
 });
 
 test('directory-only browse hubs remain noindex when present', () => {
