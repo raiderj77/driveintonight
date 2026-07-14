@@ -42,7 +42,7 @@ export default function Privacy() {
         }}
       >
         <h2 style={{ fontSize: "1.3rem", color: brandColor }}>
-          Last Updated: April 2026
+          Last Updated: July 13, 2026
         </h2>
 
         <h2 style={{ fontSize: "1.3rem", color: brandColor, marginTop: "2rem" }}>
@@ -58,57 +58,33 @@ export default function Privacy() {
         <h2 style={{ fontSize: "1.3rem", color: brandColor, marginTop: "2rem" }}>
           2. Third-Party Services
         </h2>
-        <h3 style={{ fontSize: "1.1rem", color: "#555" }}>Google AdSense</h3>
+        <h3 style={{ fontSize: "1.1rem", color: "#555" }}>Optional Services</h3>
         <p>
-          We work with third-party advertising partners, including Google, who
-          may use cookies to serve ads based on your prior visits to this
-          website or other websites.
+          Google AdSense, Google Analytics, and Microsoft Clarity are not
+          currently enabled. The Site does not currently load their scripts or
+          serve personalized ads. Publisher identifiers may remain in ads.txt or
+          public metadata solely for ownership verification.
         </p>
         <p>
-          This website uses Google AdSense to display advertisements. Google
-          and its partners use cookies to serve ads based on your prior visits
-          to this website or other websites. Google&apos;s use of advertising
-          cookies enables it and its partners to serve ads based on your visit
-          to this site and/or other sites on the Internet.
-        </p>
-        <p>
-          You may opt out of personalized advertising by visiting{" "}
-          <a href="https://ads.google.com/settings" target="_blank" rel="noopener noreferrer" style={{ color: brandColor }}>
-            Google Ads Settings
-          </a>
-          . You may also opt out of interest-based advertising from participating
-          third-party advertisers by visiting{" "}
-          <a href="https://optout.aboutads.info" target="_blank" rel="noopener noreferrer" style={{ color: brandColor }}>
-            optout.aboutads.info
-          </a>
-          .
+          If an optional service is enabled later, this policy and any required
+          consent and opt-out controls will be updated first.
         </p>
 
         <h2 style={{ fontSize: "1.3rem", color: brandColor, marginTop: "2rem" }}>
           3. Cookies
         </h2>
         <p>
-          Our website uses cookies for analytics and advertising purposes.
-          These cookies may be set by third-party providers including Google.
-          You can control cookie settings through your browser preferences.
-          To opt out of personalized advertising, visit{" "}
-          <a href="https://ads.google.com/settings" target="_blank" rel="noopener noreferrer" style={{ color: brandColor }}>
-            ads.google.com/settings
-          </a>
-          {" "}or{" "}
-          <a href="https://optout.aboutads.info" target="_blank" rel="noopener noreferrer" style={{ color: brandColor }}>
-            optout.aboutads.info
-          </a>
-          .
+          We do not currently set optional advertising or analytics cookies.
+          Hosting and security providers may use essential mechanisms and
+          process request metadata needed to deliver and protect the Site.
         </p>
 
         <h2 style={{ fontSize: "1.3rem", color: brandColor, marginTop: "2rem" }}>
           4. Analytics
         </h2>
         <p>
-          We may use analytics services to understand how visitors use our
-          website. This information helps us improve our services but does not
-          identify individual users personally.
+          Optional third-party analytics is currently disabled. We may review
+          aggregate hosting and reliability information to maintain the Site.
         </p>
 
         <h2 style={{ fontSize: "1.3rem", color: brandColor, marginTop: "2rem" }}>
@@ -168,7 +144,7 @@ export default function Privacy() {
           <li><strong>Right to Data Portability:</strong> You may request a copy of your personal data in a portable format.</li>
         </ul>
         <p>
-          <strong>Global Privacy Control (GPC):</strong> Drive-In Tonight honors Global Privacy Control (GPC) signals. If you have GPC enabled in your browser, we will treat it as a universal opt-out signal and apply the strictest privacy settings.
+          <strong>Global Privacy Control (GPC):</strong> The Site does not currently sell personal data or run targeted advertising. If processing subject to an opt-out is introduced later, we will honor applicable GPC signals.
         </p>
         <p>
           <strong>No Sale of Data:</strong> Drive-In Tonight does not sell personal data.
