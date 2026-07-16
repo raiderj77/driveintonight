@@ -1,12 +1,18 @@
 # Drive-In Tonight
 
-> Free directory of drive-in movie theaters across the United States. Find open drive-ins near you with showtimes, amenities, and directions.
+> Imported drive-in theater records undergoing primary-source review, plus independently researched visitor guides.
 
-## Browse
-- [Home](https://driveintonight.com): Search all drive-in theaters
-- [By State](https://driveintonight.com/arkansas): Find drive-ins in your state
+## Current evidence limits
 
-## About
-- [About Us](https://driveintonight.com/about): About this directory
-- [Privacy Policy](https://driveintonight.com/privacy): How we handle data
-- [Contact](https://driveintonight.com/contact): Get in touch
+- The bulk file contains 288 records and no per-record original source or review date.
+- Bulk state and detail routes are noindex.
+- One source-backed visitor guide is currently published for Shankweiler's Drive-In.
+- A bulk record does not establish current operation, showtimes, admission, amenities, or availability.
+- The site does not currently run advertising or affiliate links.
+
+## Public pages
+
+- https://driveintonight.com/
+- https://driveintonight.com/about
+- https://driveintonight.com/contact
+- https://driveintonight.com/pennsylvania/shankweilers-drive-in

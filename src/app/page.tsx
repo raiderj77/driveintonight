@@ -1,289 +1,103 @@
-/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import locations from '@/data/locations.json';
-
-const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN ?? '';
-
-function getMapboxImage(lat: number, lng: number, width = 800, height = 500): string {
-  return `https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v12/static/${lng},${lat},15,0/${width}x${height}?access_token=${MAPBOX_TOKEN}`;
-}
-
-function getDriveInPreview(d: { name: string; state: string; city: string; amenities: string[]; description: string }): string {
-  const amenityCount = d.amenities.length;
-  const location = d.city ? `${d.city}, ${d.state}` : d.state;
-  if (amenityCount >= 2) {
-    return `Drive-in theater in ${location} featuring ${d.amenities.slice(0, 2).join(' and ').toLowerCase()}.`;
-  }
-  return `Classic drive-in theater in ${location}. Open for screenings.`;
-}
+import { theaterGuides } from '@/content/theater-guides';
 
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  title: 'Drive-In Tonight, Find Drive-In Movie Theaters Near You',
-  description: 'Discover drive-in movie theaters across the USA. Classic outdoor cinema experiences with directions, amenities, and showtime info.',
+  title: 'Drive-In Tonight - Theater Record and Visitor Guide Rebuild',
+  description: 'Browse imported drive-in theater records and a source-backed visitor guide while the directory is rebuilt with current operator evidence.',
+  alternates: { canonical: 'https://driveintonight.com' },
 };
 
-const ALL_STATES = [
-  'Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware',
-  'Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky',
-  'Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi',
-  'Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico',
-  'New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania',
-  'Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont',
-  'Virginia','Washington','West Virginia','Wisconsin','Wyoming',
-];
-
 export default function Home() {
-  const featured = locations.slice(0, 6);
-  const statesWithData = Array.from(new Set(locations.map((l) => l.state))).length;
+  const states = Array.from(new Map(locations.map((location) => [location.stateSlug, location.state])).entries()).sort((a, b) => a[1].localeCompare(b[1]));
+  const withCity = locations.filter((location) => location.city).length;
+  const withWebsite = locations.filter((location) => location.website).length;
+  const reviewedGuideCount = Object.keys(theaterGuides).length;
+  const samples = locations.filter((location) => location.city && location.slug !== 'shankweilers-drive-in').slice(0, 6);
 
   return (
     <>
+      <div className="notice-bar"><strong>Source rebuild:</strong> most directory records have not been checked with a current theater source.</div>
+
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        '@context':'https://schema.org','@type':'WebSite',url:'https://driveintonight.com',
-        name:'Drive-In Tonight',
-        dateModified:new Date().toISOString().substring(0,10),
-        potentialAction:{'@type':'SearchAction',target:{'@type':'EntryPoint',urlTemplate:'https://driveintonight.com/search?q={search_term_string}'},'query-input':'required name=search_term_string'},
+        '@context': 'https://schema.org', '@type': 'WebSite', url: 'https://driveintonight.com', name: 'Drive-In Tonight',
       }) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        '@context':'https://schema.org','@type':'Organization',
-        name:'Drive-In Tonight',
-        url:'https://driveintonight.com',
-        description:'Directory of drive-in movie theaters across the United States',
-        dateModified:new Date().toISOString().substring(0,10),
-      }) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        '@context':'https://schema.org','@type':'LocalBusiness',
-        name:'Drive-In Tonight Directory',
-        url:'https://driveintonight.com',
-        description:'Find drive-in movie theaters near you across the United States',
-        areaServed:'United States',
-        dateModified:new Date().toISOString().substring(0,10),
-      }) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        '@context':'https://schema.org','@type':'FAQPage',
-        dateModified:new Date().toISOString().substring(0,10),
-        mainEntity:[
-          {
-            '@type':'Question',
-            name:'How do I find a drive-in movie theater near me?',
-            acceptedAnswer:{'@type':'Answer',text:'Use the Drive-In Tonight directory to search by state or city. Each listing includes the theater address, current showtimes, screen count, admission prices, and whether the theater uses FM radio or a dedicated app for audio.'},
-          },
-          {
-            '@type':'Question',
-            name:'How does sound work at a drive-in movie theater?',
-            acceptedAnswer:{'@type':'Answer',text:'Most modern drive-in theaters broadcast audio over a dedicated FM radio frequency that you tune to on your car stereo. Some theaters use a free mobile app. The radio frequency is posted on signage at the entrance and listed in each theater\'s directory entry.'},
-          },
-          {
-            '@type':'Question',
-            name:'How much does it cost to attend a drive-in movie?',
-            acceptedAnswer:{'@type':'Answer',text:'Drive-in admission typically ranges from $8 to $15 per person, often with reduced prices for children under 12. Many drive-ins charge per carload rather than per person for certain showings. Pricing varies by location and is subject to change, always check the theater listing or website for current prices.'},
-          },
-          {
-            '@type':'Question',
-            name:'What should I bring to a drive-in movie theater?',
-            acceptedAnswer:{'@type':'Answer',text:'Bring blankets, pillows, lawn chairs, insect repellent, and snacks, though most drive-ins have a concession stand. Arrive 30 to 60 minutes early for good parking. Charge your car battery if planning to run the radio for extended periods, or bring a portable Bluetooth speaker as a backup.'},
-          },
-          {
-            '@type':'Question',
-            name:'Are drive-in movie theaters still open today?',
-            acceptedAnswer:{'@type':'Answer',text:'Yes, approximately 300 drive-in movie theaters remain open across the United States, a fraction of the over 4,000 that existed in the 1950s peak. Drive-ins have seen a resurgence since 2020 and many have upgraded to digital projection and modern facilities.'},
-          },
-        ],
+        '@context': 'https://schema.org', '@type': 'Organization', name: 'Drive-In Tonight', url: 'https://driveintonight.com',
+        description: 'A drive-in theater record directory undergoing primary-source review',
       }) }} />
 
-      <div style={{ background: '#1e1b4b', borderBottom: '3px solid #f59e0b', padding: '0.875rem 1.5rem', textAlign: 'center', fontSize: '0.875rem' }}>
-        <strong style={{ color: '#f59e0b' }}>This directory is paused for editorial enrichment.</strong>{' '}
-        Visit our active sites:{' '}
-        <a href="https://soakusa.net" style={{ color: '#93c5fd', textDecoration: 'underline' }}>soakusa.net</a>
-        {' | '}
-        <a href="https://publicboatramps.com" style={{ color: '#93c5fd', textDecoration: 'underline' }}>publicboatramps.com</a>
-        {' | '}
-        <a href="https://fibertools.app" style={{ color: '#93c5fd', textDecoration: 'underline' }}>fibertools.app</a>
-      </div>
-
-      {/* Hero, star field with neon glow */}
-      <section style={{ position: 'relative', background: 'linear-gradient(180deg, var(--velvet) 0%, #0d0820 60%, #1a0a2e 100%)', overflow: 'hidden', padding: '7rem 1.5rem 8rem' }}>
-        {/* Stars */}
-        <div aria-hidden className="star-field" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }} />
-        {/* Neon glow orbs */}
-        <div aria-hidden style={{ position: 'absolute', top: '20%', left: '10%', width: '300px', height: '300px', background: 'radial-gradient(circle, rgba(255,45,120,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
-        <div aria-hidden style={{ position: 'absolute', bottom: '20%', right: '8%', width: '250px', height: '250px', background: 'radial-gradient(circle, rgba(61,34,104,0.4) 0%, transparent 70%)', pointerEvents: 'none' }} />
-        <div className="container" style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
-          <p className="anim-fade-up marquee-text" style={{ display: 'inline-block', marginBottom: '1rem', background: 'rgba(245,200,66,0.08)', padding: '0.4rem 1.2rem', borderRadius: '4px', border: '1px solid rgba(245,200,66,0.25)', fontSize: '0.9rem' }}>
-            🎬 NOW PLAYING, DRIVE-IN DIRECTORY
-          </p>
-          <h1 className="anim-fade-up anim-delay-1" style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3rem, 8vw, 6rem)', color: 'var(--white)', marginBottom: '0.5rem', lineHeight: 1, letterSpacing: '0.04em' }}>
-            FIND YOUR<br /><span style={{ color: 'var(--neon)', textShadow: '0 0 30px rgba(255,45,120,0.6)' }}>DRIVE-IN</span><br />TONIGHT
-          </h1>
-          <p className="anim-fade-up anim-delay-2" style={{ fontSize: '1.05rem', color: 'var(--silver)', marginBottom: '2.75rem', maxWidth: '460px', margin: '0 auto 2.75rem', fontFamily: 'var(--font-body)', lineHeight: 1.65 }}>
-            Classic outdoor cinema, double features &amp; retro vibes, {locations.length}+ drive-in theaters across America.
-          </p>
-          <div className="anim-fade-up anim-delay-3" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', marginTop: '2rem' }}>
-            <a href="/california" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.85rem 2rem', borderRadius: '50px', fontWeight: 700, fontSize: '0.95rem', background: 'var(--marquee)', color: 'var(--velvet)', textDecoration: 'none', transition: 'background 0.2s' }}>Find Drive-Ins →</a>
-            <a href="/ohio" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.85rem 2rem', borderRadius: '50px', fontWeight: 700, fontSize: '0.95rem', background: 'transparent', color: 'white', border: '2px solid rgba(245,200,66,0.4)', textDecoration: 'none', transition: 'background 0.2s' }}>Browse by State</a>
+      <section className="home-hero">
+        <div className="container hero-inner">
+          <p className="section-label hero-label">Drive-in theater records</p>
+          <h1>FIND A RECORD.<br /><span>VERIFY THE SHOW.</span></h1>
+          <p>Browse {locations.length} imported theater names and coordinates. One visitor guide has been checked against current first-party theater pages. For every other record, confirm the venue, operating status, films, tickets, rules, accessibility, and weather policy directly before traveling.</p>
+          <div className="button-row">
+            <Link href="/pennsylvania/shankweilers-drive-in" className="btn btn-gold">Read the source-backed guide</Link>
+            <Link href="/browse-states" className="btn btn-outline">Browse imported records</Link>
           </div>
         </div>
-        {/* Screen silhouette */}
-        <div aria-hidden style={{ position: 'absolute', bottom: 40, left: '50%', transform: 'translateX(-50%)', width: '140px', height: '90px', border: '3px solid rgba(255,45,120,0.15)', borderRadius: '4px', pointerEvents: 'none' }} />
-        <svg aria-hidden viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', display: 'block' }} preserveAspectRatio="none">
-          <path d="M0,40 C360,60 1080,20 1440,40 L1440,60 L0,60 Z" fill="var(--ivory)" />
-        </svg>
       </section>
 
-      {/* Stats */}
-      <section style={{ background: 'var(--white)', borderBottom: '1px solid rgba(255,45,120,0.08)' }}>
+      <section aria-label="Directory inventory" className="stats-section">
         <div className="container stats-grid">
-          {[
-            { n:`${locations.length}+`, l:'Drive-Ins Listed' },
-            { n:`${statesWithData}`, l:'States Covered' },
-            { n:'Classic', l:'Outdoor Cinema' },
-            { n:'Retro', l:'& Modern' },
-          ].map(({n,l}) => (
-            <div key={l} className="stat-item">
-              <div className="stat-number">{n}</div>
-              <div className="stat-label">{l}</div>
-            </div>
-          ))}
+          <div className="stat-item"><strong>{locations.length}</strong><span>Imported records</span></div>
+          <div className="stat-item"><strong>{withCity}</strong><span>With a city field</span></div>
+          <div className="stat-item"><strong>{withWebsite}</strong><span>With an unreviewed website field</span></div>
+          <div className="stat-item"><strong>{reviewedGuideCount}</strong><span>Source-backed visitor guide</span></div>
         </div>
       </section>
 
-      {/* Featured */}
-      <section style={{ padding: '5rem 1.5rem 4rem' }}>
+      <section className="section-pad">
+        <div className="container featured-guide">
+          <div>
+            <p className="section-label">Reviewed July 13, 2026</p>
+            <h2>Shankweiler&apos;s Drive-In visitor guide</h2>
+            <p>This independently researched guide cites the theater&apos;s official website, rules, history, and event calendar. It separates reviewed planning information from details that still need same-day confirmation.</p>
+          </div>
+          <Link href="/pennsylvania/shankweilers-drive-in" className="btn btn-pink">Plan a visit</Link>
+        </div>
+      </section>
+
+      <section className="section-pad section-muted">
         <div className="container">
-          <p className="section-label">🎬 Now Showing</p>
-          <h2 className="section-title">Featured Drive-Ins</h2>
-          <p className="section-sub" style={{ marginBottom: '3rem' }}>America's most beloved drive-in theaters, where movies meet the open sky.</p>
-          <div className="grid-3">
-            {featured.map((loc, i) => (
-              <Link key={loc.slug} href={`/${loc.stateSlug}/${loc.slug}`} style={{ textDecoration: 'none' }}>
-                <article className="card">
-                  <img src={getMapboxImage(loc.lat, loc.lng)} alt={loc.name} className="card-img" loading="lazy" width={800} height={500} />
-                  <div className="card-body">
-                    <div className="card-meta"><span>📍</span><span>{loc.city ? `${loc.city}, ` : ''}{loc.state}</span></div>
-                    <h3 className="card-title">{loc.name}</h3>
-                    <p style={{ fontSize: '0.875rem', color: '#667', lineHeight: 1.65, flex: 1, marginBottom: '1rem', fontFamily: 'var(--font-body)' }}>{getDriveInPreview(loc)}</p>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
-                      {loc.amenities.slice(0,3).map((a) => <span key={a} className="chip">{a}</span>)}
-                    </div>
-                  </div>
-                </article>
+          <p className="section-label">Sample imported records</p>
+          <h2 className="section-title">What the bulk directory currently contains</h2>
+          <p className="section-copy">These records have a name, region, and coordinates. The current file has no original source or review-date field. A stored website field is not displayed as a current operator link until it is reviewed.</p>
+          <div className="card-grid">
+            {samples.map((location) => (
+              <Link key={`${location.stateSlug}-${location.slug}`} href={`/${location.stateSlug}/${location.slug}`} className="record-card">
+                <span className="eyebrow">Imported coordinate record</span>
+                <h3>{location.name}</h3>
+                <p>{location.city}, {location.state}</p>
+                <small>{location.lat.toFixed(3)}, {location.lng.toFixed(3)}</small>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* How it works */}
-      <section style={{ background: 'var(--velvet)', padding: '5rem 1.5rem' }}>
+      <section className="section-pad dark-section">
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-            <p style={{ color: 'var(--neon)', fontWeight: 700, fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.14em', marginBottom: '0.75rem', fontFamily: 'var(--font-body)' }}>Simple Process</p>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2.6rem', color: 'var(--white)', letterSpacing: '0.04em' }}>PLAN YOUR MOVIE NIGHT</h2>
-          </div>
-          <div className="grid-3">
-            {[
-              { icon:'🗺️', title:'FIND A THEATER', desc:'Browse by state to find drive-ins near you. Check amenities, screen count, and directions.' },
-              { icon:'🚗', title:'PACK THE CAR', desc:'Grab blankets, snacks, and a portable radio. Double features are the best features.' },
-              { icon:'🎬', title:'ENJOY THE SHOW', desc:'Tune your FM radio, watch the stars, and experience cinema the way it was meant to be.' },
-            ].map(({icon,title,desc}) => (
-              <div key={title} style={{ textAlign: 'center', padding: '2rem 1.5rem', background: 'rgba(255,255,255,0.04)', borderRadius: 'var(--radius)', border: '1px solid rgba(255,45,120,0.15)' }}>
-                <div className="step-icon">{icon}</div>
-                <h3 style={{ fontFamily: 'var(--font-display)', color: 'var(--neon-lt)', fontSize: '1.5rem', marginBottom: '0.75rem', letterSpacing: '0.05em' }}>{title}</h3>
-                <p style={{ color: 'var(--silver)', lineHeight: 1.7, fontSize: '0.95rem', fontFamily: 'var(--font-body)' }}>{desc}</p>
-              </div>
-            ))}
+          <p className="section-label hero-label">Before you drive</p>
+          <h2>USE THE THEATER&apos;S CURRENT INFORMATION</h2>
+          <div className="three-grid">
+            <article><h3>Confirm it is operating</h3><p>Check a current first-party venue page or contact the theater. A directory coordinate does not establish that a theater is open.</p></article>
+            <article><h3>Check the exact event</h3><p>Verify the date, gate time, film order, ticket availability, admission model, age policies, and weather notices for the screening you plan to attend.</p></article>
+            <article><h3>Review venue rules</h3><p>Confirm vehicle-light, hatchback, radio, food, pet, accessibility, parking, and re-entry policies. They differ by operator and event.</p></article>
           </div>
         </div>
       </section>
 
-      {/* Content */}
-      <section style={{ padding: '5rem 1.5rem' }}>
-        <div className="container" style={{ maxWidth: '860px' }}>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', color: 'var(--velvet)', marginBottom: '1.25rem', letterSpacing: '0.04em' }}>{"America's Drive-In Theater Heritage"}</h2>
-          <p style={{ lineHeight: 1.85, marginBottom: '1.25rem', fontFamily: 'var(--font-body)' }}>Drive-in theaters are a uniquely American invention, born in the 1930s and reaching peak popularity in the 1950s and 60s, when thousands dotted the landscape from coast to coast. Today, fewer than 300 remain, making each one a precious piece of living history.</p>
-          <p style={{ lineHeight: 1.85, marginBottom: '1.25rem', fontFamily: 'var(--font-body)' }}>What makes the drive-in experience irreplaceable is its atmosphere: the massive glowing screen against a darkening sky, the crackle of an FM signal, the smell of popcorn drifting between cars, and a community of strangers sharing the same story in the open air.</p>
-          <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', color: 'var(--velvet)', marginTop: '2rem', marginBottom: '0.75rem', letterSpacing: '0.04em' }}>Tips for Your Drive-In Visit</h3>
-          <p style={{ lineHeight: 1.85, fontFamily: 'var(--font-body)' }}>Arrive early to get the best spot. Bring a portable FM radio for better sound than your car stereo. Many drive-ins show double features, so pack enough food and blankets for the long haul. Always check the theater's website for current films and any reservation requirements.</p>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section style={{ background: 'var(--cream)', borderTop: '1px solid rgba(255,45,120,0.06)', padding: '5rem 1.5rem' }}>
-        <div className="container" style={{ maxWidth: '800px' }}>
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <p className="section-label">Common Questions</p>
-            <h2 className="section-title">FAQ</h2>
-          </div>
-          {[
-            { q:'How do I find a drive-in movie theater near me?', a:'Use the Drive-In Tonight directory to search by state or city. Each listing includes the theater address, current showtimes, screen count, admission prices, and whether the theater uses FM radio or a dedicated app for audio.' },
-            { q:'How does sound work at a drive-in movie theater?', a:'Most modern drive-in theaters broadcast audio over a dedicated FM radio frequency that you tune to on your car stereo. Some theaters use a free mobile app. The radio frequency is posted on signage at the entrance and listed in each theater\'s directory entry.' },
-            { q:'How much does it cost to attend a drive-in movie?', a:'Drive-in admission typically ranges from $8 to $15 per person, often with reduced prices for children under 12. Many drive-ins charge per carload rather than per person for certain showings. Pricing varies by location and is subject to change, always check the theater listing or website for current prices.' },
-            { q:'What should I bring to a drive-in movie theater?', a:'Bring blankets, pillows, lawn chairs, insect repellent, and snacks, though most drive-ins have a concession stand. Arrive 30 to 60 minutes early for good parking. Charge your car battery if planning to run the radio for extended periods, or bring a portable Bluetooth speaker as a backup.' },
-            { q:'Are drive-in movie theaters still open today?', a:'Yes, approximately 300 drive-in movie theaters remain open across the United States, a fraction of the over 4,000 that existed in the 1950s peak. Drive-ins have seen a resurgence since 2020 and many have upgraded to digital projection and modern facilities.' },
-          ].map(({q,a}) => (
-            <details key={q} className="faq-item">
-              <summary>{q}</summary>
-              <div className="faq-answer">{a}</div>
-            </details>
-          ))}
-        </div>
-      </section>
-
-      {/* GEO Content Sections */}
-      <section style={{ padding: '5rem 1.5rem' }}>
-        <div className="container" style={{ maxWidth: '860px' }}>
-
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', color: 'var(--velvet)', marginBottom: '0.75rem', letterSpacing: '0.04em' }}>How to Have the Best Drive-In Movie Experience</h2>
-          <p style={{ fontWeight: 600, lineHeight: 1.75, marginBottom: '1rem', fontFamily: 'var(--font-body)' }}>Arrive 30 to 60 minutes before showtime to get your preferred spot. Tune to the posted FM frequency for sound, and bring blankets and snacks, most drive-ins allow outside food.</p>
-          <p style={{ lineHeight: 1.85, marginBottom: '2.5rem', fontFamily: 'var(--font-body)' }}>Parking strategy matters: front rows put you close to the screen but may require tilting your head, while mid-lot spots offer the best viewing angle. Test your FM radio before the feature starts and keep the engine off to preserve battery, many regulars bring a portable Bluetooth speaker as backup for a double feature. Approximately 300 drive-in theaters remain open across the United States, so each one is worth the extra planning to enjoy fully.</p>
-
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', color: 'var(--velvet)', marginBottom: '0.75rem', letterSpacing: '0.04em' }}>Why Are Drive-In Movie Theaters Making a Comeback?</h2>
-          <p style={{ fontWeight: 600, lineHeight: 1.75, marginBottom: '1rem', fontFamily: 'var(--font-body)' }}>Drive-ins offer a unique outdoor movie experience that indoor theaters cannot replicate, privacy, fresh air, and the ability to bring pets, children, and your own snacks make them increasingly popular.</p>
-          <p style={{ lineHeight: 1.85, marginBottom: '2.5rem', fontFamily: 'var(--font-body)' }}>Drive-in theater attendance surged over 40% between 2019 and 2021, according to the United Drive-In Theatre Owners Association, as audiences sought open-air venues during the shift toward outdoor entertainment. That momentum has continued, with many operators investing in laser projection, upgraded concession menus, and themed event nights to attract new generations. The United States has more operating drive-in theaters than any other country, with the highest concentrations in Pennsylvania, New York, and Ohio.</p>
-
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', color: 'var(--velvet)', marginBottom: '0.75rem', letterSpacing: '0.04em' }}>What Movies Are Typically Shown at Drive-In Theaters?</h2>
-          <p style={{ fontWeight: 600, lineHeight: 1.75, marginBottom: '1rem', fontFamily: 'var(--font-body)' }}>Drive-ins show current Hollywood releases, often programming double features for a single admission price. Many also host classic film nights, holiday screenings, and special events throughout the year.</p>
-          <p style={{ lineHeight: 1.85, marginBottom: '2.5rem', fontFamily: 'var(--font-body)' }}>The double feature tradition remains alive at most drive-ins, offering two films back-to-back for one ticket, a value unmatched by traditional cinemas. Drive-ins license films through the same distribution channels as indoor theaters, so first-run releases are common. Special event programming includes Halloween horror marathons, Fourth of July fireworks screenings, holiday classics in December, and retro film nights that draw audiences who may never have seen a drive-in before.</p>
-
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', color: 'var(--velvet)', marginBottom: '0.75rem', letterSpacing: '0.04em' }}>How Do I Know if a Drive-In Theater Is Still Operating?</h2>
-          <p style={{ fontWeight: 600, lineHeight: 1.75, marginBottom: '1rem', fontFamily: 'var(--font-body)' }}>Check the theater&apos;s listing for current operating status, seasonal hours, and contact information. Many drive-ins operate seasonally from April through October in northern climates.</p>
-          <p style={{ lineHeight: 1.85, marginBottom: '2.5rem', fontFamily: 'var(--font-body)' }}>Always verify hours directly with the theater before making a trip, this directory is updated regularly, but individual theater schedules and seasonal closures can change without notice. Approximately 300 drive-in movie theaters remain open across the United States, down from over 4,000 at the peak in the 1950s, so confirming a theater is active before you travel is always worth the extra step.</p>
-
-          <div style={{ borderTop: '1px solid rgba(255,45,120,0.12)', paddingTop: '2rem', marginTop: '1rem' }}>
-            <h3 style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.14em', color: '#888', marginBottom: '1rem' }}>Further Reading</h3>
-            <ul style={{ listStyle: 'none', display: 'flex', flexWrap: 'wrap', gap: '1.25rem' }}>
-              <li><a href="https://www.uditoa.org" target="_blank" rel="noopener noreferrer nofollow" style={{ color: 'var(--velvet)', fontSize: '0.9rem', fontFamily: 'var(--font-body)' }}>United Drive-In Theatre Owners Association</a></li>
-              <li><a href="https://www.loc.gov/search/?q=drive-in+theater" target="_blank" rel="noopener noreferrer nofollow" style={{ color: 'var(--velvet)', fontSize: '0.9rem', fontFamily: 'var(--font-body)' }}>Library of Congress, Drive-In Theater History</a></li>
-              <li><a href="https://www.natoonline.org" target="_blank" rel="noopener noreferrer nofollow" style={{ color: 'var(--velvet)', fontSize: '0.9rem', fontFamily: 'var(--font-body)' }}>National Association of Theatre Owners</a></li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Browse States */}
-      <section style={{ padding: '5rem 1.5rem' }}>
+      <section className="section-pad" id="browse-states">
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-            <p className="section-label">All 50 States</p>
-            <h2 className="section-title">Browse Drive-Ins by State</h2>
-          </div>
-          <div className="grid-states">
-            {ALL_STATES.map((s) => (
-              <Link key={s} href={`/${s.toLowerCase().replace(/\s+/g,'-')}`} className="state-link">{s}</Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section style={{ background: 'var(--velvet)', padding: '4rem 1.5rem', textAlign: 'center' }}>
-        <div className="container" style={{ maxWidth: '600px' }}>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2.8rem', color: 'var(--white)', marginBottom: '1rem', letterSpacing: '0.04em' }}>LIGHTS. CAMERA. DRIVE.</h2>
-          <p style={{ color: 'var(--silver)', marginBottom: '2rem', lineHeight: 1.7, fontFamily: 'var(--font-body)' }}>{locations.length}+ drive-in theaters across {statesWithData} states. Find yours tonight.</p>
-          <Link href="/browse-states" className="btn btn-neon" style={{ padding: '0.9rem 2.5rem', borderRadius: '50px' }}>Explore Theaters →</Link>
+          <p className="section-label">Imported directory</p>
+          <h2 className="section-title">Browse {states.length} represented states</h2>
+          <p className="section-copy">State and unreviewed record pages remain out of search indexing while their source, operator, and review date are added.</p>
+          <div className="state-grid">{states.map(([slug, name]) => <Link key={slug} href={`/${slug}`}>{name}</Link>)}</div>
         </div>
       </section>
     </>
