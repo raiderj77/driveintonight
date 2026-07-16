@@ -1,137 +1,49 @@
-/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import locations from '@/data/locations.json';
 
-const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN ?? '';
-
-function getMapboxImage(lat: number, lng: number, width = 800, height = 500): string {
-  return `https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v12/static/${lng},${lat},15,0/${width}x${height}?access_token=${MAPBOX_TOKEN}`;
-}
-
-function getDriveInPreview(d: { name: string; state: string; city: string; amenities: string[]; description: string }): string {
-  const amenityCount = d.amenities.length;
-  const location = d.city ? `${d.city}, ${d.state}` : d.state;
-  if (amenityCount >= 2) {
-    return `Drive-in theater in ${location} featuring ${d.amenities.slice(0, 2).join(' and ').toLowerCase()}.`;
-  }
-  return `Classic drive-in theater in ${location}. Open for screenings.`;
-}
-
-export const revalidate = 86400;
-
-const stateList = [
-  { name: 'Alabama', slug: 'alabama' }, { name: 'Alaska', slug: 'alaska' },
-  { name: 'Arizona', slug: 'arizona' }, { name: 'Arkansas', slug: 'arkansas' },
-  { name: 'California', slug: 'california' }, { name: 'Colorado', slug: 'colorado' },
-  { name: 'Connecticut', slug: 'connecticut' }, { name: 'Delaware', slug: 'delaware' },
-  { name: 'Florida', slug: 'florida' }, { name: 'Georgia', slug: 'georgia' },
-  { name: 'Hawaii', slug: 'hawaii' }, { name: 'Idaho', slug: 'idaho' },
-  { name: 'Illinois', slug: 'illinois' }, { name: 'Indiana', slug: 'indiana' },
-  { name: 'Iowa', slug: 'iowa' }, { name: 'Kansas', slug: 'kansas' },
-  { name: 'Kentucky', slug: 'kentucky' }, { name: 'Louisiana', slug: 'louisiana' },
-  { name: 'Maine', slug: 'maine' }, { name: 'Maryland', slug: 'maryland' },
-  { name: 'Massachusetts', slug: 'massachusetts' }, { name: 'Michigan', slug: 'michigan' },
-  { name: 'Minnesota', slug: 'minnesota' }, { name: 'Mississippi', slug: 'mississippi' },
-  { name: 'Missouri', slug: 'missouri' }, { name: 'Montana', slug: 'montana' },
-  { name: 'Nebraska', slug: 'nebraska' }, { name: 'Nevada', slug: 'nevada' },
-  { name: 'New Hampshire', slug: 'new-hampshire' }, { name: 'New Jersey', slug: 'new-jersey' },
-  { name: 'New Mexico', slug: 'new-mexico' }, { name: 'New York', slug: 'new-york' },
-  { name: 'North Carolina', slug: 'north-carolina' }, { name: 'North Dakota', slug: 'north-dakota' },
-  { name: 'Ohio', slug: 'ohio' }, { name: 'Oklahoma', slug: 'oklahoma' },
-  { name: 'Oregon', slug: 'oregon' }, { name: 'Pennsylvania', slug: 'pennsylvania' },
-  { name: 'Rhode Island', slug: 'rhode-island' }, { name: 'South Carolina', slug: 'south-carolina' },
-  { name: 'South Dakota', slug: 'south-dakota' }, { name: 'Tennessee', slug: 'tennessee' },
-  { name: 'Texas', slug: 'texas' }, { name: 'Utah', slug: 'utah' },
-  { name: 'Vermont', slug: 'vermont' }, { name: 'Virginia', slug: 'virginia' },
-  { name: 'Washington', slug: 'washington' }, { name: 'West Virginia', slug: 'west-virginia' },
-  { name: 'Wisconsin', slug: 'wisconsin' }, { name: 'Wyoming', slug: 'wyoming' },
-];
-
-function getStateName(slug: string) {
-  return stateList.find((s) => s.slug === slug)?.name ?? slug.split('-').map((w) => w[0].toUpperCase() + w.slice(1)).join(' ');
-}
+type Props = { params: Promise<{ state: string }> };
 
 export function generateStaticParams() {
-  return stateList.map((s) => ({ state: s.slug }));
+  return Array.from(new Set(locations.map((location) => location.stateSlug))).map((state) => ({ state }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ state: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { state } = await params;
-  const stateName = getStateName(state);
+  const first = locations.find((location) => location.stateSlug === state);
+  if (!first) return { title: 'State not found' };
   return {
-    title: `Drive-In Theaters in ${stateName}`,
-    description: `Find drive-in movie theaters in ${stateName}. Classic outdoor cinema with directions and amenity info.`,
-    alternates: { canonical: `https://driveintonight.com/${state}` },
+    title: `${first.state} Imported Drive-In Theater Records`,
+    description: `Browse imported drive-in theater coordinate records labeled ${first.state}. Current operating status has not been established for bulk records.`,
     robots: { index: false, follow: true, googleBot: { index: false, follow: true } },
+    alternates: { canonical: `https://driveintonight.com/${state}` },
   };
 }
 
-export default async function StatePage({ params }: { params: Promise<{ state: string }> }) {
+export default async function StatePage({ params }: Props) {
   const { state } = await params;
-  const stateName = getStateName(state);
-  const spots = locations.filter((l) => l.stateSlug === state);
+  const records = locations.filter((location) => location.stateSlug === state).sort((a, b) => a.name.localeCompare(b.name));
+  if (!records.length) notFound();
+  const stateName = records[0].state;
+  const cityCount = records.filter((record) => record.city).length;
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        '@context':'https://schema.org','@type':'BreadcrumbList',
-        itemListElement:[
-          { '@type':'ListItem',position:1,name:'Home',item:'https://driveintonight.com'},
-          { '@type':'ListItem',position:2,name:stateName,item:`https://driveintonight.com/${state}`},
-        ],
-      }) }} />
-
-      {/* Hero */}
-      <section style={{ position: 'relative', background: 'linear-gradient(180deg, var(--velvet) 0%, #0d0820 100%)', padding: '4rem 1.5rem 3.5rem', overflow: 'hidden' }}>
-        <div aria-hidden className="star-field" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }} />
-        <div aria-hidden style={{ position: 'absolute', top: 0, right: 0, width: '40%', height: '100%', background: 'rgba(61,34,104,0.08)', pointerEvents: 'none' }} />
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <Link href="/" style={{ color: 'var(--neon-lt)', fontSize: '0.875rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', marginBottom: '1.5rem', fontWeight: 700, fontFamily: 'var(--font-body)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>← All States</Link>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem,5vw,3.5rem)', color: 'white', marginBottom: '0.75rem', letterSpacing: '0.04em' }}>
-            DRIVE-INS IN <span style={{ color: 'var(--neon)', textShadow: '0 0 20px rgba(255,45,120,0.5)' }}>{stateName.toUpperCase()}</span>
-          </h1>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <span className="chip chip-white">{spots.length} {spots.length===1?'Theater':'Theaters'} Listed</span>
-            <span style={{ color: 'var(--silver)', fontSize: '0.9rem', fontFamily: 'var(--font-body)' }}>Classic outdoor cinema</span>
-          </div>
+      <section className="route-hero"><div className="container"><Link href="/browse-states">Back to all states</Link><h1>{stateName}</h1><p>{records.length} imported coordinate records; {cityCount} include a city field.</p></div></section>
+      <section className="section-pad"><div className="container">
+        <div className="source-warning"><strong>Unreviewed directory:</strong> these records do not have a recorded original source or review date. Confirm the venue and all time-sensitive details with a current first-party source before traveling.</div>
+        <div className="card-grid">
+          {records.map((record) => (
+            <Link className="record-card" key={record.slug} href={`/${record.stateSlug}/${record.slug}`}>
+              <span className="eyebrow">Imported record</span>
+              <h3>{record.name}</h3>
+              <p>{record.city ? `${record.city}, ${record.state}` : `${record.state}; city field missing`}</p>
+              <small>{record.lat.toFixed(3)}, {record.lng.toFixed(3)}</small>
+            </Link>
+          ))}
         </div>
-        <svg aria-hidden viewBox="0 0 1440 40" xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', display: 'block' }} preserveAspectRatio="none">
-          <path d="M0,20 C360,40 1080,0 1440,20 L1440,40 L0,40 Z" fill="var(--ivory)" />
-        </svg>
-      </section>
-
-      {/* Grid */}
-      <section style={{ padding: '4rem 1.5rem' }}>
-        <div className="container">
-          {spots.length > 0 ? (
-            <div className="grid-3">
-              {spots.map((spot, i) => (
-                <Link key={spot.slug} href={`/${state}/${spot.slug}`} style={{ textDecoration: 'none' }}>
-                  <article className="card">
-                    <img src={getMapboxImage(spot.lat, spot.lng)} alt={spot.name} className="card-img" loading="lazy" width={800} height={500} />
-                    <div className="card-body">
-                      <div className="card-meta"><span>📍</span><span>{spot.city ? `${spot.city}, ` : ''}{spot.state}</span></div>
-                      <h2 className="card-title">{spot.name}</h2>
-                      <p style={{ fontSize: '0.875rem', color: '#667', lineHeight: 1.65, flex: 1, marginBottom: '1rem', fontFamily: 'var(--font-body)' }}>{getDriveInPreview(spot)}</p>
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
-                        {spot.amenities.slice(0,3).map((a) => <span key={a} className="chip">{a}</span>)}
-                      </div>
-                    </div>
-                  </article>
-                </Link>
-              ))}
-            </div>
-          ) : (
-            <div style={{ textAlign: 'center', padding: '5rem 2rem', background: 'var(--white)', borderRadius: 'var(--radius)', boxShadow: 'var(--shadow-card)' }}>
-              <p style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🎬</p>
-              <h2 style={{ fontFamily: 'var(--font-display)', color: 'var(--velvet)', marginBottom: '0.75rem', fontSize: '2rem', letterSpacing: '0.04em' }}>COMING SOON</h2>
-              <p style={{ color: 'var(--gray)', fontFamily: 'var(--font-body)' }}>{"We're adding drive-ins in "}{stateName}{", check back soon!"}</p>
-              <Link href="/" className="btn btn-neon" style={{ display: 'inline-flex', marginTop: '1.5rem' }}>Browse Other States</Link>
-            </div>
-          )}
-        </div>
-      </section>
+      </div></section>
     </>
   );
 }

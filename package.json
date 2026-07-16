@@ -8,7 +8,8 @@
     "start": "next start",
     "test:privacy": "node --test tests/privacy-security.test.mjs",
     "test:index": "node --test tests/index-quality.test.mjs",
-    "test:guides": "node --test tests/guide-quality.test.mjs"
+    "test:guides": "node --test tests/guide-quality.test.mjs",
+    "test:rebuild": "node --test tests/rebuild-quality.test.mjs"
   },
   "dependencies": {
     "next": "15.5.20",
@@ -20,5 +21,8 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "typescript": "^5"
+  },
+  "overrides": {
+    "postcss": "8.5.19"
   }
 }
