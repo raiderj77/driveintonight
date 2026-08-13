@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Bebas_Neue, Barlow } from 'next/font/google';
+import CreatorRevenueLink from '@/components/CreatorRevenueLink';
 import './globals.css';
 
 const display = Bebas_Neue({ subsets: ['latin'], variable: '--font-display', display: 'swap', weight: '400' });
@@ -38,7 +39,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="site-footer">
           <div className="container footer-grid">
             <div><h2>Drive-In Tonight</h2><p>Imported theater records undergoing source review, plus independently researched visitor guides.</p></div>
-            <div><h3>More from our network</h3><ul>{networkSites.map(([name, href]) => <li key={href}><a href={href} target="_blank" rel="noopener noreferrer">{name}</a></li>)}</ul></div>
+            <div><h3>More from our network</h3><ul>{networkSites.map(([name, href]) => (
+              <li key={href}>
+                {href === 'https://creatorrevenuecalculator.com' ? (
+                  <CreatorRevenueLink>{name}</CreatorRevenueLink>
+                ) : (
+                  <a href={href} target="_blank" rel="noopener noreferrer">{name}</a>
+                )}
+              </li>
+            ))}</ul></div>
           </div>
           <div className="container footer-bottom"><span>© 2026 Drive-In Tonight</span><nav aria-label="Legal and contact"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/contact">Contact</a></nav></div>
         </footer>
