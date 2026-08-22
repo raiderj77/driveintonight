@@ -47,3 +47,7 @@ test('the Creator footer link is followed only on the homepage', () => {
   assert.match(layout, /href === 'https:\/\/creatorrevenuecalculator\.com'/);
   assert.match(creatorLink, /pathname === '\/' \? 'noopener noreferrer' : 'nofollow noopener noreferrer'/);
 });
+
+test('the footer does not publish a FiberTools cross-site link', () => {
+  assert.doesNotMatch(read('src/app/layout.tsx'), /https:\/\/(?:www\.)?fibertools\.app/i);
+});

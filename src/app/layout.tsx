@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 const networkSites = [
-  ['Fiber Tools', 'https://fibertools.app'], ['Mind Check Tools', 'https://mindchecktools.com'],
+  ['Mind Check Tools', 'https://mindchecktools.com'],
   ['Creator Revenue Calculator', 'https://creatorrevenuecalculator.com'], ['Medical Bill Reader', 'https://medicalbillreader.com'],
   ['Public Boat Ramps', 'https://publicboatramps.com'], ['Find Swim Spots', 'https://findswimspots.com'],
   ['Craft Distillery Finder', 'https://craftdistilleryfinder.com'], ['Nearby Escape Rooms', 'https://nearbyescaperooms.com'],
