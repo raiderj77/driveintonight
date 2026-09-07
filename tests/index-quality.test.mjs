@@ -40,12 +40,9 @@ test('Googlebot can crawl pages to observe route-level noindex rules', () => {
   assert.match(robots, /User-agent:\s*Googlebot[\s\S]*?Allow:\s*\//i);
 });
 
-test('the Creator footer link is followed only on the homepage', () => {
+test('the footer no longer renders portfolio link collections', () => {
   const layout = read('src/app/layout.tsx');
-  const creatorLink = read('src/components/CreatorRevenueLink.tsx');
-
-  assert.match(layout, /href === 'https:\/\/creatorrevenuecalculator\.com'/);
-  assert.match(creatorLink, /pathname === '\/' \? 'noopener noreferrer' : 'nofollow noopener noreferrer'/);
+  assert.doesNotMatch(layout, /networkSites|toolSites|directorySites|CreatorRevenueLink/);
 });
 
 test('the footer does not publish a FiberTools cross-site link', () => {
