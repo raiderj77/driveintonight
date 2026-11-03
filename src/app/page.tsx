@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import locations from '@/data/locations.json';
 import { theaterGuides } from '@/content/theater-guides';
+import { locationRegionLabel } from '@/lib/regions';
 
 export const dynamic = 'force-static';
 
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const states = Array.from(new Map(locations.map((location) => [location.stateSlug, location.state])).entries()).sort((a, b) => a[1].localeCompare(b[1]));
+  const states = Array.from(new Map(locations.map((location) => [location.stateSlug, locationRegionLabel(location)])).entries()).sort((a, b) => a[1].localeCompare(b[1]));
   const withCity = locations.filter((location) => location.city).length;
   const withWebsite = locations.filter((location) => location.website).length;
   const reviewedGuideCount = Object.keys(theaterGuides).length;
@@ -95,7 +96,7 @@ export default function Home() {
       <section className="section-pad" id="browse-states">
         <div className="container">
           <p className="section-label">Imported directory</p>
-          <h2 className="section-title">Browse {states.length} represented states</h2>
+          <h2 className="section-title">Browse {states.length} represented states and provinces</h2>
           <p className="section-copy">State and unreviewed record pages remain out of search indexing while their source, operator, and review date are added.</p>
           <div className="state-grid">{states.map(([slug, name]) => <Link key={slug} href={`/${slug}`}>{name}</Link>)}</div>
         </div>
