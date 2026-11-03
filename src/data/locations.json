@@ -61,12 +61,12 @@
   {
     "name": "Warwick Drive-In Theatre",
     "slug": "warwick-drive-in-theatre",
-    "state": "New Jersey",
-    "stateSlug": "new-jersey",
+    "state": "New York",
+    "stateSlug": "new-york",
     "city": "",
     "lat": 41.235052,
     "lng": -74.3793,
-    "description": "Warwick Drive-In Theatre is a drive-in movie theater in New Jersey. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "description": "Warwick Drive-In Theatre is a drive-in movie theater in New York. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
     "amenities": [
       "Drive-in screen",
       "FM radio audio"
@@ -165,12 +165,12 @@
   {
     "name": "Delsea Drive-in",
     "slug": "delsea-drive-in",
-    "state": "Delaware",
-    "stateSlug": "delaware",
+    "state": "New Jersey",
+    "stateSlug": "new-jersey",
     "city": "",
     "lat": 39.454022,
     "lng": -75.041294,
-    "description": "Delsea Drive-in is a drive-in movie theater in Delaware. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "description": "Delsea Drive-in is a drive-in movie theater in New Jersey. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
     "amenities": [
       "Drive-in screen",
       "FM radio audio"
@@ -1606,12 +1606,12 @@
   {
     "name": "Rustic Drive-in",
     "slug": "rustic-drive-in",
-    "state": "Massachusetts",
-    "stateSlug": "massachusetts",
+    "state": "Rhode Island",
+    "stateSlug": "rhode-island",
     "city": "North Smithfield",
     "lat": 41.95672,
     "lng": -71.492529,
-    "description": "Rustic Drive-in is a drive-in movie theater in North Smithfield, Massachusetts. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "description": "Rustic Drive-in is a drive-in movie theater in North Smithfield, Rhode Island. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
     "amenities": [
       "Drive-in screen",
       "FM radio audio"
@@ -1741,12 +1741,12 @@
   {
     "name": "Warner's Drive-In",
     "slug": "warners-drive-in",
-    "state": "Virginia",
-    "stateSlug": "virginia",
+    "state": "West Virginia",
+    "stateSlug": "west-virginia",
     "city": "",
     "lat": 38.683532,
     "lng": -79.325464,
-    "description": "Warner's Drive-In is a drive-in movie theater in Virginia. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "description": "Warner's Drive-In is a drive-in movie theater in West Virginia. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
     "amenities": [
       "Drive-in screen",
       "FM radio audio"
@@ -1786,12 +1786,12 @@
   {
     "name": "Summer Drive-in 4",
     "slug": "summer-drive-in-4",
-    "state": "Arkansas",
-    "stateSlug": "arkansas",
+    "state": "Tennessee",
+    "stateSlug": "tennessee",
     "city": "",
     "lat": 35.158585,
     "lng": -89.88799,
-    "description": "Summer Drive-in 4 is a drive-in movie theater in Arkansas. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "description": "Summer Drive-in 4 is a drive-in movie theater in Tennessee. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
     "amenities": [
       "Drive-in screen",
       "FM radio audio"
@@ -2340,12 +2340,12 @@
   {
     "name": "Blue Grass Drive-in",
     "slug": "blue-grass-drive-in",
-    "state": "Illinois",
-    "stateSlug": "illinois",
+    "state": "Iowa",
+    "stateSlug": "iowa",
     "city": "",
     "lat": 41.510279,
     "lng": -90.783865,
-    "description": "Blue Grass Drive-in is a drive-in movie theater in Illinois. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "description": "Blue Grass Drive-in is a drive-in movie theater in Iowa. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
     "amenities": [
       "Drive-in screen",
       "FM radio audio"
@@ -2727,12 +2727,12 @@
   {
     "name": "Silver Bow Twin Drive-In",
     "slug": "silver-bow-twin-drive-in",
-    "state": "Idaho",
-    "stateSlug": "idaho",
+    "state": "Montana",
+    "stateSlug": "montana",
     "city": "",
     "lat": 45.994473,
     "lng": -112.657964,
-    "description": "Silver Bow Twin Drive-In is a drive-in movie theater in Idaho. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "description": "Silver Bow Twin Drive-In is a drive-in movie theater in Montana. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
     "amenities": [
       "Drive-in screen",
       "FM radio audio"
@@ -3800,12 +3800,12 @@
   {
     "name": "Northfield Drive-In",
     "slug": "northfield-drive-in",
-    "state": "Massachusetts",
-    "stateSlug": "massachusetts",
+    "state": "New Hampshire",
+    "stateSlug": "new-hampshire",
     "city": "Hinsdale",
     "lat": 42.727407,
     "lng": -72.449674,
-    "description": "Northfield Drive-In is a drive-in movie theater in Hinsdale, Massachusetts. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "description": "Northfield Drive-In is a drive-in movie theater in Hinsdale, New Hampshire. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
     "amenities": [
       "Drive-in screen",
       "FM radio audio"
@@ -4065,12 +4065,12 @@
   {
     "name": "Rock 'n' Roll Drive-In",
     "slug": "rock-n-roll-drive-in",
-    "state": "Illinois",
-    "stateSlug": "illinois",
+    "state": "Missouri",
+    "stateSlug": "missouri",
     "city": "",
     "lat": 37.22652,
     "lng": -89.660966,
-    "description": "Rock 'n' Roll Drive-In is a drive-in movie theater in Illinois. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "description": "Rock 'n' Roll Drive-In is a drive-in movie theater in Missouri. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
     "amenities": [
       "Drive-in screen",
       "FM radio audio"
@@ -4169,12 +4169,12 @@
   {
     "name": "Pharoahplex Drive-In",
     "slug": "pharoahplex-drive-in",
-    "state": "Idaho",
-    "stateSlug": "idaho",
+    "state": "Montana",
+    "stateSlug": "montana",
     "city": "",
     "lat": 46.285406,
     "lng": -114.142876,
-    "description": "Pharoahplex Drive-In is a drive-in movie theater in Idaho. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "description": "Pharoahplex Drive-In is a drive-in movie theater in Montana. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
     "amenities": [
       "Drive-in screen",
       "FM radio audio"
@@ -4242,12 +4242,12 @@
   {
     "name": "Sage Crest Drive-In",
     "slug": "sage-crest-drive-in",
-    "state": "California",
-    "stateSlug": "california",
+    "state": "Nevada",
+    "stateSlug": "nevada",
     "city": "",
     "lat": 39.00291,
     "lng": -119.183738,
-    "description": "Sage Crest Drive-In is a drive-in movie theater in California. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
+    "description": "Sage Crest Drive-In is a drive-in movie theater in Nevada. Enjoy classic drive-in movies under the open sky from the comfort of your car.",
     "amenities": [
       "Drive-in screen",
       "FM radio audio"
