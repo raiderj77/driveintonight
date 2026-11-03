@@ -6,9 +6,9 @@ const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), 'utf
 const locations = JSON.parse(read('src/data/locations.json'));
 
 test('published inventory numbers match the imported file', () => {
-  assert.equal(locations.length, 288);
-  assert.equal(locations.filter((location) => location.city).length, 193);
-  assert.equal(locations.filter((location) => location.website).length, 221);
+  assert.equal(locations.length, 287);
+  assert.equal(locations.filter((location) => location.city).length, 195);
+  assert.equal(locations.filter((location) => location.website).length, 220);
   assert.equal(locations.filter((location) => Object.hasOwn(location, 'source')).length, 0);
   assert.equal(locations.filter((location) => Object.hasOwn(location, 'reviewedAt')).length, 0);
 });
