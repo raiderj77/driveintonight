@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { Bebas_Neue, Barlow } from 'next/font/google';
 import './globals.css';
 
@@ -9,6 +10,8 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://driveintonight.com'),
   title: { template: '%s | Drive-In Tonight', default: 'Drive-In Tonight - Theater Record Rebuild' },
   description: 'Imported drive-in theater records undergoing current primary-source review.',
+  icons: { icon: { url: '/logo-mark.svg', type: 'image/svg+xml' } },
+  openGraph: { images: ['/logo-mark.svg'] },
   verification: { google: '7DeasPCFCDL-ColW4v6ONqKH8jIPNRNoVLxXRmsgpUg' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
 };
@@ -21,7 +24,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a className="skip-link" href="#main-content">Skip to main content</a>
         <header className="site-header">
           <div className="container header-inner">
-            <a href="/" className="logo"><span aria-hidden>DIT</span><strong>Drive-In Tonight</strong></a>
+            <a href="/" className="logo" aria-label="Drive-In Tonight">
+              <Image src="/logo-mark.svg" alt="Drive-In Tonight" width={36} height={36} unoptimized />
+              <strong>Drive-In Tonight</strong>
+            </a>
             <nav aria-label="Primary navigation">
               <a href="/">Home</a><a href="/browse-states">Browse States</a><a href="/about">About</a>
             </nav>

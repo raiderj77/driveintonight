@@ -29,7 +29,6 @@ a:hover { text-decoration-thickness: 2px; }
 .site-header { position: sticky; top: 0; z-index: 1000; background: var(--night); border-bottom: 3px solid var(--pink); box-shadow: 0 3px 18px rgba(23, 17, 38, .35); }
 .header-inner { min-height: 72px; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
 .logo { display: inline-flex; align-items: center; gap: .7rem; color: white; text-decoration: none; }
-.logo span { display: grid; place-items: center; width: 42px; height: 34px; border: 2px solid var(--gold); color: var(--gold); border-radius: 5px; font: 400 1rem var(--font-display); letter-spacing: .08em; }
 .logo strong { font: 400 1.35rem var(--font-display); letter-spacing: .07em; }
 .site-header nav, .footer-bottom nav { display: flex; align-items: center; gap: 1.5rem; }
 .site-header nav a { min-height: 44px; display: inline-flex; align-items: center; color: #f1e9f6; text-decoration: none; font-weight: 600; }
