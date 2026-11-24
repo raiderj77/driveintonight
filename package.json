@@ -13,7 +13,7 @@
     "test:canada": "node --test tests/canada-records.test.mjs"
   },
   "dependencies": {
-    "next": "^15.5.28",
+    "next": "^16.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
